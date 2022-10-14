@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace FoodStore.Controllers
 {
@@ -6,11 +10,10 @@ namespace FoodStore.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Homea asd";
             return View();
         }
 
-        public ActionResult NavbarPartial()
+       public ActionResult NavbarPartial()
         {
             return PartialView();
         }
