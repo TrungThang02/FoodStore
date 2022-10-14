@@ -10,6 +10,7 @@ namespace FoodStore.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Homea";
             return View();
         }
 
