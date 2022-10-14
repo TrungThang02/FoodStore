@@ -12,6 +12,7 @@ namespace FoodStore.Controllers
         {
             ViewBag.Title = "Homea asd";
             ViewBag.Title = "Homea asd";
+            ViewBag.Title = "Homea asd";
             return View();
         }
 
