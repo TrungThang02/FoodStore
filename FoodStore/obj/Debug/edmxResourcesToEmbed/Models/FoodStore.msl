@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodStoreModelStoreContainer" CdmEntityContainer="FoodStoreEntities">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="FoodStoreModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminAddress" ColumnName="AdminAddress" />
+          <ScalarProperty Name="AdminPhone" ColumnName="AdminPhone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EmailAdmin" ColumnName="EmailAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="FoodStoreModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="FoodStoreModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="FoodStoreModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+          <ScalarProperty Name="RecipientPhone" ColumnName="RecipientPhone" />
+          <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+          <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetail">
+      <EntityTypeMapping TypeName="FoodStoreModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="FoodStoreModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FoodStoreModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voucher">
+      <EntityTypeMapping TypeName="FoodStoreModel.Voucher">
+        <MappingFragment StoreEntitySet="Voucher">
+          <ScalarProperty Name="Voucherid" ColumnName="Voucherid" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="FoodStoreModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="FoodStoreModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="FoodStoreModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="FoodStoreModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="FoodStoreModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="FoodStoreModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="FoodStoreModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
