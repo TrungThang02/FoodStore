@@ -32,6 +32,10 @@ namespace FoodStore.Controllers
         {
             return PartialView();
         }
+        public ActionResult TabCategoryPartial()
+        {
+            return PartialView();
+        }
 
     }
 }
