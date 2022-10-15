@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FoodStore",
+    "\\FoodStore\\Content"
   ],
-  "SelectedNode": "\\FoodStore.sln",
+  "SelectedNode": "\\FoodStore\\Content\\a",
   "PreviewInSolutionExplorer": false
 }
