@@ -231,6 +231,7 @@
     <Content Include="Content\Images\Lau\laucuadong.jpg" />
     <Content Include="Content\Images\Lau\laugalae.jpg" />
     <Content Include="Content\Images\Lau\lauthai.jpg" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\mixaonam.jpg" />
     <Content Include="Content\Images\namrom.jpg" />
     <Content Include="Content\Images\ochuong.jpg" />
@@ -238,7 +239,6 @@
     <Content Include="Content\Images\pizzahaisan.jpg" />
     <Content Include="Content\Images\sinhtocamxoai.jpg" />
     <Content Include="Content\Images\suonnuong.jpg" />
-    <Content Include="Content\Images\TDTFood.png" />
     <Content Include="Content\Images\thitlonnuong.jpg" />
     <Content Include="Content\Images\tradaocamsa.jpg" />
     <Content Include="Content\Images\trasua.jpg" />
