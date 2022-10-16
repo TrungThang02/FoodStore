@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,8 +7,10 @@ using System.Web.Mvc;
 
 namespace FoodStore.Controllers
 {
+    
     public class HomeController : Controller
     {
+        FoodStoreEntities db = new FoodStoreEntities();
         public ActionResult Index()
         {
             return View();
@@ -19,6 +22,9 @@ namespace FoodStore.Controllers
         }
         public ActionResult NavigationPartial()
         {
+
+            var danhmuc = from c in db.Category select c;
+            ViewBag.danhmuc = danhmuc;
             return PartialView();
         }
 
@@ -36,6 +42,6 @@ namespace FoodStore.Controllers
         {
             return PartialView();
         }
-
+     
     }
 }

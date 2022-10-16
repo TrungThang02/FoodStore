@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\FoodStore",
-    "\\FoodStore\\Content"
+    "\\FoodStore\\Content",
+    "\\FoodStore\\Controllers",
+    "\\FoodStore\\Views",
+    "\\FoodStore\\Views\\Products"
   ],
-  "SelectedNode": "\\FoodStore\\Content\\a",
+  "SelectedNode": "\\FoodStore.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -4,9 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .product-img{
+    .product {
+        border-radius: 1.5rem 1.5rem 0 0;
+    }
+
+    .add-to-cart {
+        border-radius: 0 0 1.5rem 1.5rem;
+    }
+
+    .product-img {
         height: 200px;
-        object-fit:cover;
+        object-fit: cover;
+        border-radius: 1.5rem;
+    }
+
+    img {
+        border-radius: 1.5rem 1.5rem 0 0;
     }
 </style>
 @foreach (var p in Model)
