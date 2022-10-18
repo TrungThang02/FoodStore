@@ -3,10 +3,10 @@
     "",
     "\\FoodStore",
     "\\FoodStore\\Content",
+    "\\FoodStore\\Content\\Images",
     "\\FoodStore\\Controllers",
     "\\FoodStore\\Views",
     "\\FoodStore\\Views\\Products"
   ],
-  "SelectedNode": "\\FoodStore.sln",
   "PreviewInSolutionExplorer": false
 }
