@@ -134,43 +134,43 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FoodStore.Context.cs">
+    <Compile Include="Models\FoodStoreModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FoodStore.Context.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FoodStore.cs">
+    <Compile Include="Models\FoodStoreModel.Designer.cs">
+      <DependentUpon>FoodStoreModel.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FoodStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FoodStore.Designer.cs">
+    <Compile Include="Models\FoodStoreModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FoodStore.edmx</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Voucher.cs">
-      <DependentUpon>FoodStore.tt</DependentUpon>
+      <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -252,15 +252,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\FoodStore.Context.tt">
+    <Content Include="Models\FoodStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodStore.edmx</DependentUpon>
-      <LastGenOutput>FoodStore.Context.cs</LastGenOutput>
+      <DependentUpon>FoodStoreModel.edmx</DependentUpon>
+      <LastGenOutput>FoodStoreModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\FoodStore.tt">
+    <Content Include="Models\FoodStoreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodStore.edmx</DependentUpon>
-      <LastGenOutput>FoodStore.cs</LastGenOutput>
+      <DependentUpon>FoodStoreModel.edmx</DependentUpon>
+      <LastGenOutput>FoodStoreModel1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -272,12 +272,12 @@
     <Content Include="Content\fonts\slick.eot" />
     <Content Include="Content\fonts\slick.ttf" />
     <Content Include="Content\fonts\slick.woff" />
-    <EntityDeploy Include="Models\FoodStore.edmx">
+    <EntityDeploy Include="Models\FoodStoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FoodStore.Designer.cs</LastGenOutput>
+      <LastGenOutput>FoodStoreModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\FoodStore.edmx.diagram">
-      <DependentUpon>FoodStore.edmx</DependentUpon>
+    <Content Include="Models\FoodStoreModel.edmx.diagram">
+      <DependentUpon>FoodStoreModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

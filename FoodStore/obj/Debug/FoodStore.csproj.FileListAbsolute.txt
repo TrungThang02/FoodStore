@@ -239,3 +239,7 @@ C:\Users\TranTrungThang\Source\Repos\trantrungthang\FoodStore\FoodStore\bin\Enti
 C:\Users\TranTrungThang\Source\Repos\trantrungthang\FoodStore\FoodStore\bin\EntityFramework.SqlServer.dll
 C:\Users\TranTrungThang\Source\Repos\trantrungthang\FoodStore\FoodStore\bin\EntityFramework.xml
 C:\Users\TranTrungThang\Source\Repos\trantrungthang\FoodStore\FoodStore\bin\EntityFramework.SqlServer.xml
+E:\DaiHoc\HK1-III\Lập trình web\Doan\FoodStore\FoodStore\bin\EntityFramework.dll
+E:\DaiHoc\HK1-III\Lập trình web\Doan\FoodStore\FoodStore\bin\EntityFramework.SqlServer.dll
+E:\DaiHoc\HK1-III\Lập trình web\Doan\FoodStore\FoodStore\bin\EntityFramework.xml
+E:\DaiHoc\HK1-III\Lập trình web\Doan\FoodStore\FoodStore\bin\EntityFramework.SqlServer.xml

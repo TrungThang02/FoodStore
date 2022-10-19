@@ -13,7 +13,7 @@ namespace FoodStore.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var dac = from d in db.Product select d;
+            var dac = from d in db.Products select d;
             return View(dac);
         }
        

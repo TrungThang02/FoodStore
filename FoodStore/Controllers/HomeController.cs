@@ -23,7 +23,7 @@ namespace FoodStore.Controllers
         public ActionResult NavigationPartial()
         {
 
-            var danhmuc = from c in db.Category select c;
+            var danhmuc = from c in db.Categories select c;
             ViewBag.danhmuc = danhmuc;
             return PartialView();
         }

@@ -17,7 +17,7 @@ namespace FoodStore.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            this.OrderDetail = new HashSet<OrderDetail>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
         public int OrderId { get; set; }
@@ -32,6 +32,6 @@ namespace FoodStore.Models
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
