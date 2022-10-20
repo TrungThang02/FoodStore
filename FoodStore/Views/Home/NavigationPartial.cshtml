@@ -1,8 +1,8 @@
 ﻿<!-- container -->
 <style>
-   
+
     li{
-      
+
         margin: 0.625rem;
       margin-right : 4rem;
     }
@@ -11,10 +11,21 @@
         font-size : 1.4rem;
         text-transform : uppercase;
     }
-</style>
+
+
+    #navigation {
+
+        position: sticky !important;
+        top: 0px;
+        z-index : 100;
+        box-shadow : 0 0 10px rgba(0,0,0,.5);
+    }
+    .navbarctn {
+    }
+    </style>
 <div class="container">
     <div id="responsive-nav">
-        
+
         <ul class="main-nav nav navbar-nav">
             <li class="active"><a href="~" class="a"/>Trang chủ</a></li>
             @foreach (var d in ViewBag.danhmuc)

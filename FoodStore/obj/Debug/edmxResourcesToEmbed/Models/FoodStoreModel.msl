@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="FoodStoreModelStoreContainer" CdmEntityContainer="FoodStoreEntities">
-    <EntitySetMapping Name="Admins">
+    <EntitySetMapping Name="Admin">
       <EntityTypeMapping TypeName="FoodStoreModel.Admin">
         <MappingFragment StoreEntitySet="Admin">
           <ScalarProperty Name="AdminId" ColumnName="AdminId" />
@@ -15,7 +15,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Categories">
+    <EntitySetMapping Name="Category">
       <EntityTypeMapping TypeName="FoodStoreModel.Category">
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
@@ -23,7 +23,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Customers">
+    <EntitySetMapping Name="Customer">
       <EntityTypeMapping TypeName="FoodStoreModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
@@ -37,7 +37,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
+    <EntitySetMapping Name="Order">
       <EntityTypeMapping TypeName="FoodStoreModel.Order">
         <MappingFragment StoreEntitySet="Order">
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -52,7 +52,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderDetails">
+    <EntitySetMapping Name="OrderDetail">
       <EntityTypeMapping TypeName="FoodStoreModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetail">
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -62,7 +62,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Products">
+    <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="FoodStoreModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -75,7 +75,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="FoodStoreModel.sysdiagram">
+      <EntityTypeMapping TypeName="FoodStoreModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -85,7 +85,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Vouchers">
+    <EntitySetMapping Name="Voucher">
       <EntityTypeMapping TypeName="FoodStoreModel.Voucher">
         <MappingFragment StoreEntitySet="Voucher">
           <ScalarProperty Name="Voucherid" ColumnName="Voucherid" />

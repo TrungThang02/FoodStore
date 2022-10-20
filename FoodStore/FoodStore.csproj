@@ -147,15 +147,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FoodStoreModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FoodStoreModel.Designer.cs">
-      <DependentUpon>FoodStoreModel.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Models\FoodStoreModel1.cs">
+    <Compile Include="Models\FoodStoreModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FoodStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FoodStoreModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodStoreModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
       <DependentUpon>FoodStoreModel.tt</DependentUpon>
@@ -166,7 +166,7 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>FoodStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Voucher.cs">
@@ -260,7 +260,7 @@
     <Content Include="Models\FoodStoreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FoodStoreModel.edmx</DependentUpon>
-      <LastGenOutput>FoodStoreModel1.cs</LastGenOutput>
+      <LastGenOutput>FoodStoreModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
