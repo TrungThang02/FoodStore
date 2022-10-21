@@ -30,7 +30,7 @@
             <li class="active"><a href="~" class="a"/>Trang chủ</a></li>
             @foreach (var d in ViewBag.danhmuc)
             {
-                <li><a href="~/@d.CategoryId" class="a">@d.CategoryName</a></li>
+                <li><a href="~/Products/@d.CategoryLink" class="a">@d.CategoryName</a></li>
 
             }
         </ul>

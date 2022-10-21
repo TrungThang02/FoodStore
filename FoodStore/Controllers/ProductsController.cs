@@ -18,8 +18,76 @@ namespace FoodStore.Controllers
         }
         public ActionResult DoChay()
         {
-            return View();
+            int c = 1;
+            var dc = from s in db.Category
+                     join p in db.Product on s.CategoryId equals p.CategoryId
+                     where p.CategoryId == c
+                     select p;
+            return View(dc);
+
         }
-       
+        public ActionResult DoAnNhanh()
+        {
+            int c = 2;
+            var dan = from s in db.Category
+                      join p in db.Product on s.CategoryId equals p.CategoryId
+                      where p.CategoryId == c
+                      select p;
+            return View(dan);
+
+        }
+        public ActionResult DoUong()
+        {
+            int c = 3;
+            var du = from s in db.Category
+                     join p in db.Product on s.CategoryId equals p.CategoryId
+                     where p.CategoryId == c
+                     select p;
+            return View(du);
+
+        }
+        public ActionResult Lau()
+        {
+            int c = 4;
+            var l = from s in db.Category
+                    join p in db.Product on s.CategoryId equals p.CategoryId
+                    where p.CategoryId == c
+                    select p;
+            return View(l);
+
+        }
+        public ActionResult HaiSan()
+        {
+            int c = 5;
+            var hs = from s in db.Category
+                     join p in db.Product on s.CategoryId equals p.CategoryId
+                     where p.CategoryId == c
+                     select p;
+            return View(hs);
+
+        }
+        public ActionResult HoaQua()
+        {
+            int c = 6;
+            var hq = from s in db.Category
+                     join p in db.Product on s.CategoryId equals p.CategoryId
+                     where p.CategoryId == c
+                     select p;
+            return View(hq);
+
+        }
+        public ActionResult DoNuong()
+        {
+            int c = 7;
+            var dn = from s in db.Category
+                     join p in db.Product on s.CategoryId equals p.CategoryId
+                     where p.CategoryId == c
+                     select p;
+            return View(dn);
+
+        }
+
+        
+
     }
 }

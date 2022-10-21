@@ -18,6 +18,7 @@
     <EntitySetMapping Name="Category">
       <EntityTypeMapping TypeName="FoodStoreModel.Category">
         <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryLink" ColumnName="CategoryLink" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
         </MappingFragment>

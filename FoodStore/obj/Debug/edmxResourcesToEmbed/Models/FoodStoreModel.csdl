@@ -20,6 +20,7 @@
     <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CategoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+    <Property Name="CategoryLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>

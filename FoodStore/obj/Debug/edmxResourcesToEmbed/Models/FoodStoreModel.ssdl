@@ -19,6 +19,7 @@
     </Key>
     <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CategoryName" Type="nvarchar" MaxLength="20" />
+    <Property Name="CategoryLink" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>

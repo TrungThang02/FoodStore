@@ -311,6 +311,12 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\TabCategoryPartial.cshtml" />
     <Content Include="Views\Products\DoChay.cshtml" />
+    <Content Include="Views\Products\DoAnNhanh.cshtml" />
+    <Content Include="Views\Products\DoUong.cshtml" />
+    <Content Include="Views\Products\Lau.cshtml" />
+    <Content Include="Views\Products\HaiSan.cshtml" />
+    <Content Include="Views\Products\HoaQua.cshtml" />
+    <Content Include="Views\Products\DoNuong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
