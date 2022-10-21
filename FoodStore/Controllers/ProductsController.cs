@@ -88,6 +88,10 @@ namespace FoodStore.Controllers
         }
 
         
-
+        public ActionResult ChiTIetSanPham(int? id)
+        {
+            var ctsp = from s in db.Product where s.ProductId == id select s;
+            return View(ctsp);
+        }
     }
 }

@@ -317,6 +317,7 @@
     <Content Include="Views\Products\HaiSan.cshtml" />
     <Content Include="Views\Products\HoaQua.cshtml" />
     <Content Include="Views\Products\DoNuong.cshtml" />
+    <Content Include="Views\Products\ChiTIetSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

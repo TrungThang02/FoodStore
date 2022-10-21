@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>HẢI SẢN<h2
-               @foreach (var p in Model)
+<h2>HẢI SẢN</h2>
+@foreach (var p in Model)
 {
     <!-- product -->
     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
@@ -19,7 +19,7 @@
             </div>
             <div class="product-body">
                 @*<p class="product-category">Category</p>*@
-                <h3 class="product-name"><a href="#">@p.ProductName</a></h3>
+                <h3 class="product-name"><a href="~/Products/ChiTietSanPham/@p.ProductId">@p.ProductName</a></h3>
                 <h4 class="product-price">@p.Price <del class="product-old-price">@p.Price</del></h4>
                 <div class="product-rating">
                     <i class="fa fa-star"></i>
@@ -41,5 +41,4 @@
     </div>
 }
 
->
 

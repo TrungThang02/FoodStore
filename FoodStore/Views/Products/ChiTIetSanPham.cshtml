@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "ChiTIetSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    img {
+  max-width: 100%; }
+
+
+
+    .details{
+        
+    }
+
+    .card {
+        padding: 3em;
+        line-height: 1.5em;
+    }
+
+
+
+
+
+
+.product-title, .price, .sizes, .colors {
+  text-transform: UPPERCASE;
+  font-weight: bold; }
+
+.checked, .price span {
+  color: #ff9f1a; }
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+  margin-bottom: 15px; }
+
+.product-title {
+  margin-top: 0; }
+
+.size {
+  margin-right: 10px; }
+  .size:first-of-type {
+    margin-left: 40px; }
+
+.color {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  height: 2em;
+  width: 2em;
+  border-radius: 2px; }
+  .color:first-of-type {
+    margin-left: 20px; }
+
+.add-to-cart, .like {
+  background: #ff9f1a;
+padding : 0.9rem;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover, .like:hover {
+    background: #b36800;
+    color: #fff; }
+
+
+.orange {
+  background: #ff9f1a; }
+
+.green {
+  background: #85ad00; }
+
+.blue {
+  background: #0076ad; }
+
+.tooltip-inner {
+  padding: 1.3em; }
+
+
+
+ }
+</style>
+@foreach (var ctsp in Model)
+{
+
+    <div class="container-fliud">
+        <div class="wrapper row">
+            <div class="preview col-md-6">
+
+
+                <div class="preview-pic tab-content">
+                    <div class="tab-pane active" id="pic-1"><img src="~/Content/Images/@ctsp.Image" /></div>
+
+
+                </div>
+            </div>
+            <div class="details col-md-6">
+                <h3 class="product-title">@ctsp.ProductName</h3>
+                <div class="rating">
+                    <div class="stars">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <span class="review-no">41 reviews</span>
+                </div>
+                <p class="product-description">@ctsp.Description</p>
+                <h4 class="price">giá: <span>@ctsp.Price VND</span></h4>
+                <h5 class="price">Số lượng:   <input type="number" name="speed" id="" value="1" min="1" max="10" step="1"></h5>
+
+                @*<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>*@
+
+
+                <div class="action">
+                    <button class="add-to-cart btn btn-default" type="button">Thêm vào giỏ hàng</button>
+                    <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+}
