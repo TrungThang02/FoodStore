@@ -47,6 +47,7 @@ namespace FoodStore.Controllers
         {
             var dac = from d in db.Product select d;
             List<Product> products = db.Product.Where(p => p.ProductName.Contains(search)).ToList();
+            ViewBag.search = search;
             return View(products);
         }
     }
