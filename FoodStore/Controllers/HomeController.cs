@@ -18,6 +18,7 @@ namespace FoodStore.Controllers
 
        public ActionResult NavbarPartial()
         {
+           
             return PartialView();
         }
         public ActionResult NavigationPartial()
@@ -42,6 +43,11 @@ namespace FoodStore.Controllers
         {
             return PartialView();
         }
-     
+        public ActionResult TimKiem(String search = "")
+        {
+            var dac = from d in db.Product select d;
+            List<Product> products = db.Product.Where(p => p.ProductName.Contains(search)).ToList();
+            return View(products);
+        }
     }
 }

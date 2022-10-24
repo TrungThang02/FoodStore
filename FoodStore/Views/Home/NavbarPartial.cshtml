@@ -13,7 +13,7 @@
         </ul>
         <ul class="header-links pull-right">
             <li><a href="#"><i class="fa fa-dollar"></i>VND</a></li>
-            <li><a href="#"><i class="fa fa-user-o"></i>Tài khoản</a></li>
+            <li><a href="@Url.Action("Login","User")"><i class="fa fa-user-o"></i>Tài khoản</a></li>
         </ul>
     </div>
 </div>
@@ -36,13 +36,13 @@
             <!-- SEARCH BAR -->
             <div class="col-md-6">
                 <div class="header-search">
-                    <form>
+                  <form action="/Home/TimKiem" >
                         <select class="input-select">
                             @*<option value="0">Tất cả danh mục</option>
                             <option value="1">Category 01</option>
                             <option value="1">Category 02</option>*@
                         </select>
-                        <input class="input" placeholder="Bạn muốn ăn gì ?">
+                        <input type="search" name="search" value=""class="input" placeholder="Bạn muốn ăn gì ?">
                         <button class="search-btn">Tìm kiếm</button>
                     </form>
                 </div>

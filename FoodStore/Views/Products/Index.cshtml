@@ -3,32 +3,14 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .product {
-        border-radius: 1.5rem 1.5rem 0 0;
-    }
 
-    .add-to-cart {
-        border-radius: 0 0 1.5rem 1.5rem;
-    }
-
-    .product-img {
-        height: 200px;
-        object-fit: cover;
-        border-radius: 1.5rem;
-    }
-
-    img {
-        border-radius: 1.5rem 1.5rem 0 0;
-    }
-</style>
 @foreach (var p in Model)
 {
     <!-- product -->
 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
     <div class="product">
         <div class="product-img">
-            <img src="~/Content/Images/@p.Image" alt="">
+            <img src="~/Content/Images/@p.Image" alt="" class="img-product">
             <div class="product-label">
                 <span class="sale">-30%</span>
                 <span class="new">NEW</span>

@@ -93,5 +93,6 @@ namespace FoodStore.Controllers
             var ctsp = from s in db.Product where s.ProductId == id select s;
             return View(ctsp);
         }
+     
     }
 }

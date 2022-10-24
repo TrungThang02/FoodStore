@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,6 +180,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ContentUser\app.js" />
+    <Content Include="Content\ContentUser\img\log.svg" />
+    <Content Include="Content\ContentUser\img\register.svg" />
+    <Content Include="Content\ContentUser\style.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\nouislider.min.css" />
@@ -318,6 +323,8 @@
     <Content Include="Views\Products\HoaQua.cshtml" />
     <Content Include="Views\Products\DoNuong.cshtml" />
     <Content Include="Views\Products\ChiTIetSanPham.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Home\TimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

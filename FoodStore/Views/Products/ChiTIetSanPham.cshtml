@@ -5,82 +5,60 @@
 }
 
 <style>
-    img {
-  max-width: 100%; }
-
-
-
-    .details{
-        
-    }
-
-    .card {
+img {
+  max-width: 100%; 
+}
+.card {
         padding: 3em;
         line-height: 1.5em;
     }
 
-
-
-
-
-
+.like{
+        background : red;
+}
 .product-title, .price, .sizes, .colors {
   text-transform: UPPERCASE;
-  font-weight: bold; }
+  font-weight: bold; 
+
+}
 
 .checked, .price span {
   color: #ff9f1a; }
 
 .product-title, .rating, .product-description, .price, .vote, .sizes {
-  margin-bottom: 15px; }
+  margin-bottom: 15px; 
+
+}
 
 .product-title {
-  margin-top: 0; }
+  margin-top: 0; 
 
-.size {
-  margin-right: 10px; }
-  .size:first-of-type {
-    margin-left: 40px; }
+}
+    .add_to_cart {
+        background: #ff9f1a;
+    }
+.add_to_cart, .like {
 
-.color {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 10px;
-  height: 2em;
-  width: 2em;
-  border-radius: 2px; }
-  .color:first-of-type {
-    margin-left: 20px; }
-
-.add-to-cart, .like {
-  background: #ff9f1a;
 padding : 0.9rem;
   border: none;
   text-transform: UPPERCASE;
   font-weight: bold;
   color: #fff;
   -webkit-transition: background .3s ease;
-          transition: background .3s ease; }
-  .add-to-cart:hover, .like:hover {
+          transition: background .3s ease; 
+
+}
+.add_to_cart:hover, .like:hover {
     background: #b36800;
-    color: #fff; }
+    color: #fff; 
 
+}
 
-.orange {
-  background: #ff9f1a; }
-
-.green {
-  background: #85ad00; }
-
-.blue {
-  background: #0076ad; }
 
 .tooltip-inner {
-  padding: 1.3em; }
+  padding: 1.3em; 
 
-
-
- }
+}
 </style>
 @foreach (var ctsp in Model)
 {
@@ -116,8 +94,8 @@ padding : 0.9rem;
 
 
                 <div class="action">
-                    <button class="add-to-cart btn btn-default" type="button">Thêm vào giỏ hàng</button>
-                    <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                    <button class="add_to_cart btn btn-default" type="button">Thêm vào giỏ hàng</button>
+                    <button class="like btn btn-success" type="button"><span class="fa fa-heart"></span></button>
                 </div>
             </div>
         </div>
