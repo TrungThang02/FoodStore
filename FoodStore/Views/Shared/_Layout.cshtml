@@ -25,22 +25,33 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="~/Content/css/style.css" />
     <style>
+        .product-body {
+            border-radius: 0 0 1.5rem 1.5rem;
+        }
         .product {
-            border-radius: 1.5rem 1.5rem 0 0;
+            border-radius: 1.5rem;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
         }
 
         .add-to-cart {
             border-radius: 0 0 1.5rem 1.5rem;
         }
 
-        .product-img {
-            max-height: 200px;
+
+        .product-img 
+        {
+            height : 200px;
+           
             object-fit: cover;
             border-radius: 1.5rem;
         }
 
         .img-product {
             border-radius: 1.5rem 1.5rem 0 0;
+            max-height: 100%;
+        }
+        .product .add-to-cart{
+            bottom : 9px;
         }
     </style>
 
@@ -354,7 +365,7 @@
                                 <li><a href="#">Liên hệ</a></li>
                                 <li><a href="#">Điều khoản dịch vụ</a></li>
                                 <li><a href="#">Trả hàng và đặt hàng</a></li>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -399,11 +410,11 @@
                         </span>
                     </div>
                 </div>
-                <!-- /row -->
+
             </div>
-            <!-- /container -->
+
         </div>
-        <!-- /bottom footer -->
+
     </footer>
     <!-- /FOOTER -->
     <!-- jQuery Plugins -->
@@ -415,6 +426,36 @@
     <script src="~/Content/js/main.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "105741015574924");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v15.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
+
 </html>

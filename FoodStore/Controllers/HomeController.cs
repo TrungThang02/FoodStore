@@ -15,7 +15,6 @@ namespace FoodStore.Controllers
         {
             return View();
         }
-
        public ActionResult NavbarPartial()
         {
            
@@ -23,18 +22,14 @@ namespace FoodStore.Controllers
         }
         public ActionResult NavigationPartial()
         {
-
             var danhmuc = from c in db.Category select c;
             ViewBag.danhmuc = danhmuc;
             return PartialView();
         }
-
         public ActionResult BannerPartial()
         {
             return PartialView();
         }
-
-
         public ActionResult TopSellingPartial()
         {
             return PartialView();
