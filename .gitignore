@@ -1,3 +1,6 @@
-.vs/
-FoodStore/Models
-FoodStore/obj/Debug
+.vs
+Debug
+Release
+obj
+bin
+packages
