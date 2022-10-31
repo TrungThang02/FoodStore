@@ -78,8 +78,21 @@ namespace FoodStore.Controllers
             }
             return dTongTien;
         }
+        public double TongTienHang()
+        {
+            List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>;
+            if (lstGioHang != null)
+            {
+                dTongTien = lstGioHang.Sum(n => n.totalPrice);
+            }
+            return dTongTien;
+        }
 
-
+        public double PhiShip()
+        {
+            double PhiShip = 30000;
+            return PhiShip;
+        }
 
 
 
@@ -161,7 +174,9 @@ namespace FoodStore.Controllers
             }
             List<GioHang> lstGioHang = LayGioHang();
             ViewBag.TongSoLuong = TongSoLuong();
-            ViewBag.TongTien = TongTien();
+            ViewBag.TongTien = TongTien() + 30000 ;
+            ViewBag.PhiShip = PhiShip();
+            ViewBag.TongTienHang = TongTienHang();
             return View(lstGioHang);
 
 

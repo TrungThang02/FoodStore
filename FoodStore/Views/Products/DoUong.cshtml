@@ -29,7 +29,12 @@
     </div>-->
             </div>
             <div class="add-to-cart">
-                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Mua ngay</button>
+                <button class="add-to-cart-btn">
+                    <i class="fa fa-shopping-cart"></i>
+                    <a href="@Url.Action("ThemGioHang","GioHang",new { idproduct = p.ProductId, url= Request.Url.ToString() })">
+                        Thêm vào giỏ hàng
+                    </a>
+                </button>
             </div>
         </div>
     </div>

@@ -6,13 +6,22 @@
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
+<style>
+    .img-gh{
+        width : 300px;
+        height : 150px;
+        object-fit: cover;
+        padding : 5px;
+        border-radius : 5px;
+    }
 
+</style>
 <div class="container" style="margin-top : 20px;">
     <table class="table">
         <thead>
             <tr>
-                <th class="h5">Tên sản phẩm</th>
-                <th>Format</th>
+                <th>Tên sản phẩm</th>
+             
                 <th>Số lượng</th>
                 <th>Giá tiền</th>
             </tr>
@@ -25,16 +34,13 @@
                 <tr>
                     <th>
                         <div class="row" style="display : flex; align-items : center; justify-content : flex-start">
-                            <img src="~/Content/Images/@item.productImg" class="img-fluid rounded-3 col-xs-12 col-sm-6 col-md-8"
-                                 style="width: 150px; height : 150px" alt="Book">
+                            <img src="~/Content/Images/@item.productImg" class="img-fluid rounded-3 col-xs-12 col-sm-6 col-md-8 img-gh" alt="Book"  style="border-radius: 15px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
                             <div class="col-xs-6 col-md-4">
                                 <p class="mb-2">@item.productName</p>
                             </div>
                         </div>
                     </th>
-                    <td style="vertical-align : inherit">
-                        <p class="mb-0" style="font-weight: 500;">Digital</p>
-                    </td>
+                   
                     <td class="align-middle" style="vertical-align : inherit">
                         <div class="d-flex flex-row" style="align-items:center; ">
                             <button class="btn btn-link px-2"
@@ -42,7 +48,7 @@
                                 <i class="fas fa-minus"></i>
                             </button>
 
-                            <input id="form1" min="0" name="quantity" value="2" type="number"
+                            <input id="form1" min="1" name="quantity" value="@item.productQuantity" type="number"
                                    class="form-control form-control-sm" style="width: 50px;" />
 
                             <button class="btn btn-link px-2"
@@ -64,12 +70,10 @@
     </table>
     <hr />
 
-    <div style="display : flex; justify-content : flex-end">
-        <button type="button" style="width :150px;" class="btn btn-primary btn-block btn-lg">
+    <div style="display : flex; justify-content : flex-end; margin-right : 50px;">
             <div class="d-flex justify-content-between">
-                @Html.ActionLink("Checkout", "DatHang", "GioHang")
-
+                @Html.ActionLink("Xác nhận đơn hàng", "DatHang", "GioHang",new {@class="btn btn-primary"})
             </div>
-        </button>
+        
     </div>
 </div>

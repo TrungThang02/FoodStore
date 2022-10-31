@@ -13,6 +13,7 @@ namespace FoodStore.Models
         public string productImg;
         public double productPrice;
         public int productQuantity;
+        public int ShippingFee = 30000;
         public double totalPrice
         {
             get { return productPrice * productQuantity; }

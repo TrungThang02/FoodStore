@@ -3,43 +3,198 @@
     ViewBag.Title = "ĐƠN ĐẶT HÀNG";
     Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
-
-<h2 style="text-align:center">THÔNG TIN ĐƠN HÀNG</h2>
-<table align="center" border="1" style="margin : 0 auto">
-    <tr style="text-align:center; font-weight:bold;">
-        <td>Tên Sách</td>
-        <td>Ảnh Bìa</td>
-        <td>Số Lượng</td>
-        <td>Đơn Giá</td>
-        <td>Thành Tiền</td>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr style="text-align:center; font-weight:bold;">
-            <td>@item.productName</td>
-            <td><img src="~/Content/Image/@item.productImg" style="width:100px;"></td>
-            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { id = item.productId }))
-            {
-                <td align="center">@item.productQuantity</td>
-                <td align="center">@string.Format("{0:#,##0,0}", @item.productPrice)</td>
-                <td align="center">@string.Format("{0:#,##0,0}", @item.totalPrice)</td>
-            }
-        </tr>
+<style>
+    .gh {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top : 2rem;
     }
+    .pd{
+        margin-left : 20px;
+    }
+    .td{
+        display : flex;
+        align-items : center;
+    }
+    .td img{
+        
+        align-items : center;
+        border-radius : 1rem;
+    }
+    .table-borderless{
+        align-items : center;
+        margin : 0;
+        
+       
+    }
+    .name{
+        display : block;
+        align-items : center;
+       margin: 0;
+       justify-content : center;
+       width : 100%;
+       
+    }
+    .textgh{
+        align-items : center;
+    }
+    .tx2{
+        font-weight: 500;
+        font-size: 15px;
+        margin-right : 25px;
+        font-weight : bold;
+        color : red;
+       
+    }
+    .tx1 {
+        padding: 25px;
+        font-weight: 500;
+        font-size: 17px;
+    }
+    .img-gh{
+        height : 100px;
+        width : 200px;
+        object-fit : cover;
+    }
+</style>
+@foreach (var item in Model)
+{
+    <center>
+        <div class="container mt-5 mb-5">
 
-    <tr>
-        <td colspan="3" style="text-align:right; color:red; font-weight:bold; padding-right:5px;">
-            Số lượng sách: @string.Format("{0:#,##0}", @ViewBag.TongSoLuong)
-        </td>
-        <td colspan="3" style="text-align:center; color:red; font-weight:bold;">
-            Tổng tiền: @string.Format("{0:#,##0,0}", @ViewBag.TongTien) VNĐ
-        </td>
-    </tr>
-    <tr style="font-weight:bold; color:blue; text-align:right;">
-        <td colspan="9">@Html.ActionLink("TRỞ VỀ GIỎ HÀNG", "GioHang", "GioHang") </td>
-    </tr>
-</table>
-<h2 style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
+            <div class="row gh">
+                <div class="col-md-8">
+
+                    <div class="card">
+                        <div class="product border-bottom table-responsive">
+
+                            <table class="table table-borderless">
+
+                                <tbody>
+                                    <tr>
+                                        <td width="20%" class="td">
+
+                                            <img src="~/Content/Images/@item.productImg" class="img-gh">
+
+                                        </td>
+
+                                        <td width="60%" style="vertical-align: inherit">
+                                            <div class="name">
+                                                <div class="textgh">
+                                                    <span class="font-weight-bold tx tx1">Tên món : @item.productName</span>
+                                                </div>
+                                                <div class="textgh">
+                                                    <span class="font-weight-bold tx tx1">Số lượng : @item.productQuantity</span>
+                                                </div>
+                                            
+                                            </div>
+                                        </td>
+                                        <td width="20%" style="vertical-align: inherit">
+                                            <div class="text-center">
+                                                <span class="font-weight-bold tx2">@item.productPrice đ</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+}
+
+<div class="row gh">
+
+    <div class="col-md-5">
+
+        <table class="table table-borderless">
+
+            <tbody class="totals">
+
+                <tr>
+                    <td>
+                        <div class="text-left">
+
+                            <span class="text-muted">Tổng tiền hàng: </span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-right">
+                            <span>@ViewBag.TongTienHang</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="text-left">
+
+                            <span class="text-muted">Phí giao hàng: </span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-right">
+                            <span>@ViewBag.PhiShip</span>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="text-left">
+
+                            <span class="text-muted">Tổng số lượng: </span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-right">
+                            <span class="text-success">@ViewBag.TongSoLuong</span>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr class="border-top border-bottom">
+                    <td>
+                        <div class="text-left">
+
+                            <span class="font-weight-bold">Thành tiền: </span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-right">
+                            <span class="font-weight-bold">@ViewBag.TongTien đ</span>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+</div>
+
+                </div>
+
+            </div>
+
+
+<h4 style="text-align:center">XÁC NHẬN THÔNG TIN</h4>
 @{ Customer kh = (Customer)Session["TaiKhoan"]; }
 
 <table align="center" style="margin : 0 auto">
@@ -58,13 +213,14 @@
             <input type="date" name="NgayGiao" @ViewData["err"] />
         </td>
     </tr>
-    <tr style="height:40px;">
-        <td></td>
-        <td>
-            <button class="btn btn-primary"><a style="color : white" href="@Url.Action("PaymentWithPaypal","PayPal")">Thanh toán paypal</a></button>
-            <button class="btn btn-primary"><a style="color : white" href="@Url.Action("MOMO","Payment")">Thanh toán momo</a></button>
-            <button class="btn btn-primary"><a style="color : white" href="@Url.Action("Payment","Payment")">Thanh toán vnpay</a></button>
-        </td>
-    </tr>
+
 }
+
+
+
 </table>
+<div class="container gh">
+    <button class="btn btn-primary pd"><a style="color : white" href="@Url.Action("PaymentWithPaypal","PayPal")">Thanh toán PayPal</a></button>
+   
+    <button class="btn btn-primary pd"><a style="color : white" href="@Url.Action("Payment","Payment")">Thanh toán VNPAY</a></button>
+</div>
