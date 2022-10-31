@@ -32,8 +32,10 @@ namespace FoodStore.Controllers
             return PartialView();
         }
         public ActionResult TopSellingPartial()
+
         {
-            return PartialView();
+            var p = from d in db.Product select d;
+            return PartialView(p);
         }
         public ActionResult TabCategoryPartial()
         {
@@ -45,6 +47,14 @@ namespace FoodStore.Controllers
             List<Product> products = db.Product.Where(p => p.ProductName.Contains(search)).ToList();
             ViewBag.search = search;
             return View(products);
+        }
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult AboutPartial()
+        {
+            var p = from d in db.Product select d;
+       
+            return PartialView();
         }
     }
 }

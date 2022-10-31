@@ -1,65 +1,71 @@
 ﻿
 @{
     ViewBag.Title = "ChiTIetSanPham";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
 }
 
 <style>
-img {
-  max-width: 100%; 
-}
-.card {
+    img {
+        width: 30rem;
+        
+    }
+
+    .card {
         padding: 3em;
         line-height: 1.5em;
     }
 
-.like{
-        background : red;
-}
-.product-title, .price, .sizes, .colors {
-  text-transform: UPPERCASE;
-  font-weight: bold; 
+    .like {
+        background: red;
+    }
 
-}
+    .product-title, .price, .sizes, .colors {
+        text-transform: UPPERCASE;
+        font-weight: bold;
+    }
 
-.checked, .price span {
-  color: #ff9f1a; }
+        .checked, .price span {
+            color: #ff9f1a;
+        }
 
-.product-title, .rating, .product-description, .price, .vote, .sizes {
-  margin-bottom: 15px; 
+    .product-title, .rating, .product-description, .price, .vote, .sizes {
+        margin-bottom: 15px;
+    }
 
-}
+    .product-title {
+        margin-top: 0;
+    }
 
-.product-title {
-  margin-top: 0; 
-
-}
     .add_to_cart {
         background: #ff9f1a;
     }
-.add_to_cart, .like {
 
-padding : 0.9rem;
-  border: none;
-  text-transform: UPPERCASE;
-  font-weight: bold;
-  color: #fff;
-  -webkit-transition: background .3s ease;
-          transition: background .3s ease; 
+    .add_to_cart, .like {
+        padding: 0.9rem;
+        border: none;
+        text-transform: UPPERCASE;
+        font-weight: bold;
+        color: #fff;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease;
+    }
 
-}
-.add_to_cart:hover, .like:hover {
-    background: #b36800;
-    color: #fff; 
-
-}
+        .add_to_cart:hover, .like:hover {
+            background: #b36800;
+            color: #fff;
+        }
 
 
-.tooltip-inner {
-  padding: 1.3em; 
-
-}
+    .tooltip-inner {
+        padding: 1.3em;
+    }
+    .container-fliud{
+        height: 80vh;
+        margin-top : 30px;
+        align-items : center;
+    }
 </style>
+
 @foreach (var ctsp in Model)
 {
 
@@ -101,5 +107,5 @@ padding : 0.9rem;
         </div>
 
 
-</div>
+    </div>
 }
