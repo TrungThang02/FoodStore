@@ -409,3 +409,7 @@ E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.csproj.CoreCompileInp
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.csproj.CopyComplete
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.dll
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.pdb
+E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.dll
+E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.Mvc.dll
+E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.xml
+E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.Mvc.xml

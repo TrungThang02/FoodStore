@@ -5,16 +5,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using PagedList;
+
 namespace FoodStore.Controllers
 {
     public class ProductsController : Controller
     {
         FoodStoreEntities db = new FoodStoreEntities();
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+
+            int iSize = 9;
+            int iPageNum = (page ?? 1);
+         
             var dac = from d in db.Product select d;
-            return View(dac);
+            return View(dac.OrderBy(s => s.ProductId).ToPagedList(iPageNum, iSize));
         }
         public ActionResult DoChay()
         {
