@@ -121,15 +121,12 @@ namespace FoodStore.Controllers
 
 
 
-        public ActionResult CapNhatGioHang(int id, FormCollection collection)
+        public JsonResult CapNhatGioHang(int id, int quantity)     //truy cập sử dụng Url
         {
             List<GioHang> lstGioHang = LayGioHang();
             GioHang sp = lstGioHang.SingleOrDefault(n => n.productId == id);
-            if (sp != null)
-            {
-                sp.productQuantity = int.Parse(collection["txtSoLuong"].ToString());
-            }
-            return RedirectToAction("GioHang");
+            sp.productQuantity = quantity;
+            return Json(new { item = sp }, JsonRequestBehavior.AllowGet);
         }
 
 

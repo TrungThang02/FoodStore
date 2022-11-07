@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="FoodStoreModelStoreContainer" CdmEntityContainer="FoodStoreEntities">
-    <EntitySetMapping Name="Admin">
-      <EntityTypeMapping TypeName="FoodStoreModel.Admin">
-        <MappingFragment StoreEntitySet="Admin">
+    <EntitySetMapping Name="ADMIN">
+      <EntityTypeMapping TypeName="FoodStoreModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
           <ScalarProperty Name="AdminId" ColumnName="AdminId" />
           <ScalarProperty Name="AdminName" ColumnName="AdminName" />
           <ScalarProperty Name="AdminAddress" ColumnName="AdminAddress" />

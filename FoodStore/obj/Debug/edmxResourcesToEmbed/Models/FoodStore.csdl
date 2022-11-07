@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="FoodStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Admin">
+  <EntityType Name="ADMIN">
     <Key>
       <PropertyRef Name="AdminId" />
     </Key>
@@ -70,7 +70,7 @@
     </Key>
     <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Image" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="CategoryId" Type="Int32" />
@@ -145,7 +145,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="FoodStoreEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="ADMIN" EntityType="Self.ADMIN" />
     <EntitySet Name="Category" EntityType="Self.Category" />
     <EntitySet Name="Customer" EntityType="Self.Customer" />
     <EntitySet Name="Order" EntityType="Self.Order" />

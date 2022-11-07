@@ -1,10 +1,12 @@
 ﻿<!-- container -->
 <style>
+    .responsive-nav{
+      
+    }
 
-    li{
-
+    li {
         margin: 0.625rem;
-      margin-right : 4rem;
+        margin-right: 2rem;
     }
     .a{
         font-weight: 600;
@@ -18,15 +20,23 @@
         top: 0px;
         z-index: 100;
         box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+        justify-content :center;
     }
     .navbarctn {
     }
+    .ctgr {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     </style>
-<div class="container">
+
+<div class="container ctgr">
     <div id="responsive-nav">
 
         <ul class="main-nav nav navbar-nav">
-            <li class="active"><a href="~/Products" class="a"/>Trang chủ</a></li>
+            <li class="active"><a href="~/Products" class="a" />Trang chủ</a></li>
             @foreach (var d in ViewBag.danhmuc)
             {
                 <li><a href="~/Products/@d.CategoryLink" class="a">@d.CategoryName</a></li>
@@ -36,3 +46,6 @@
     </div>
 
 </div>
+
+
+                

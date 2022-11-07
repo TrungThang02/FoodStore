@@ -12,7 +12,7 @@ namespace FoodStore.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class ADMIN
     {
         public int AdminId { get; set; }
         public string AdminName { get; set; }

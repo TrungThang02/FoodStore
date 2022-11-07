@@ -36,29 +36,23 @@
                         <div class="row" style="display : flex; align-items : center; justify-content : flex-start">
                             <img src="~/Content/Images/@item.productImg" class="img-fluid rounded-3 col-xs-12 col-sm-6 col-md-8 img-gh" alt="Book"  style="border-radius: 15px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
                             <div class="col-xs-6 col-md-4">
-                                <p class="mb-2">@item.productName</p>
+                                <p class="mb-2 productName">@item.productName</p>
                             </div>
                         </div>
                     </th>
                    
                     <td class="align-middle" style="vertical-align : inherit">
                         <div class="d-flex flex-row" style="align-items:center; ">
-                            <button class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                           
 
-                            <input id="form1" min="1" name="quantity" value="@item.productQuantity" type="number"
-                                   class="form-control form-control-sm" style="width: 50px;" />
+                            <input id="form1" data-id="@item.productId" min="1" name="quantity" value="@item.productQuantity" type="number"
+                                   class="form-control form-control-sm quantity" style="width: 50px;" />
 
-                            <button class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                <i class="fas fa-plus"></i>
-                            </button>
+                           
                         </div>
                     </td>
                     <td class="align-middle" style="vertical-align : inherit">
-                        <p class="mb-0" style="font-weight: 500;">@string.Format("{0:#,##0,0}", @item.productPrice) VND</p>
+                        <p class="@item.productName" id="@($"product{ item.productId}")" style="font-weight: 500;">@string.Format("{0:#,##0,0}", @item.productPrice) VND</p>
                     </td>
                 </tr>
             }
@@ -77,3 +71,6 @@
         
     </div>
 </div>
+@section GioHang{
+    <script src="~/Scripts/GioHang.js"></script>
+    }
