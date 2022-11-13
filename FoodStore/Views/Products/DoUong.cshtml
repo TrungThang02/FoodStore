@@ -15,9 +15,9 @@
                 <div class="product-img">
                     <img src="~/Content/Images/@p.Image" alt="" class="img-product">
                     @*<div class="product-label">
-                            <span class="sale">-30%</span>
-                            <span class="new">NEW</span>
-                        </div>*@
+                    <span class="sale">-30%</span>
+                    <span class="new">NEW</span>
+                </div>*@
                 </div>
                 <div class="product-body">
                     @*<p class="product-category">Category</p>*@
@@ -25,22 +25,25 @@
                     <h4 class="product-price">@String.Format("{0:0,00}", @p.Price)đ@*<del class="product-old-price">@p.Price</del>*@</h4>
 
                     <!--<div class="product-btns">
-                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Yêu thích</span></button>-->
+            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Yêu thích</span></button>-->
                     @*<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>*@
                     <!--<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem chi tiết</span></button>
-                    </div>-->
+            </div>-->
                 </div>
             </a>
-            <a href="@Url.Action("ThemGioHang","GioHang",new { idproduct = p.ProductId, url= Request.Url.ToString() })">
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn">
-                        <i class="fa fa-shopping-cart"></i>
-                        Thêm vào giỏ hàng
-
-                    </button>
-
-                </div>
-            </a>
+            <div class="add-to-cart">
+                <button class="add-to-cart-btn" data-id="@p.ProductId" id="@($"btn{p.ProductId}")">
+                    <i class="fa fa-shopping-cart"></i>
+                    <a href="@Url.Action("ThemGioHang","GioHang",new { idproduct = p.ProductId })">
+                        <p class="@($"text{p.ProductId}") ">Thêm vào giỏ hàng</p>
+                    </a>
+                </button>
+            </div>
         </div>
     </div>
+}
+@section GioHang{
+
+    <script src="~/Scripts/Cart.js"></script>
+
 }

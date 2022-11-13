@@ -98,6 +98,7 @@
         .product .add-to-cart {
             bottom: 9px;
         }
+
         .main-nav > li > a {
             padding: 20px 20px;
         }
@@ -119,7 +120,7 @@
     <!-- /NAVIGATION -->
     <!-- SECTION -->
     <div class="bn">
-       
+
     </div>
     <!-- /SECTION -->
     <!-- SECTION -->
@@ -133,7 +134,6 @@
     </div>
     <!-- /SECTION -->
     <!-- HOT DEAL SECTION -->
-    
     <!-- /HOT DEAL SECTION -->
     <!-- SECTION -->
     <div class="section">
@@ -217,7 +217,7 @@
                 <!-- row -->
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        
+
                         <span class="copyright" style="color:#fff">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
@@ -232,8 +232,9 @@
         </div>
 
     </footer>
-    <!-- /FOOTER -->
-    <!-- jQuery Plugins -->
+
+
+
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/slick.min.js"></script>
@@ -242,11 +243,21 @@
     <script src="~/Content/js/main.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
-         @RenderSection("GioHang",required:false)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.3/bootbox.min.js" integrity="sha512-U3Q2T60uOxOgtAmm9VEtC3SKGt9ucRbvZ+U3ac/wtvNC+K21Id2dNHzRUC7Z4Rs6dzqgXKr+pCRxx5CyOsnUzg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/Models/CommentView/Comment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js" integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @RenderSection("GioHang", required: false)
 
-           
-    
+    @RenderSection("script", required: false)
+
+
+
 
 </body>
 

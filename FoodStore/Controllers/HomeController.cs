@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace FoodStore.Controllers
 {
-    //Dauyton lỏ
+    
     
     public class HomeController : Controller
     {

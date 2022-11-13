@@ -404,7 +404,6 @@ E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\System.Web.WebPages.Razor.xml
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\Newtonsoft.Json.xml
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\Antlr3.Runtime.pdb
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.csproj.AssemblyReference.cache
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.csproj.CoreCompileInputs.cache
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.csproj.CopyComplete
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.dll
@@ -413,3 +412,6 @@ E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.dll
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.Mvc.dll
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.xml
 E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PagedList.Mvc.xml
+E:\DoAnLapTrinhWeb\FoodStore\FoodStore\obj\Debug\FoodStore.csproj.AssemblyReference.cache
+E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PayPal.dll
+E:\DoAnLapTrinhWeb\FoodStore\FoodStore\bin\PayPal.xml

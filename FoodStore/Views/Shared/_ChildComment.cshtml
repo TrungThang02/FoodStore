@@ -1,0 +1,45 @@
+﻿@model List<FoodStore.Models.CommentView.CommentViewModel>
+
+@{
+    <script src="~/Models/CommentView/Comment.js"></script>
+}
+@{ var listcomment = (List<FoodStore.Models.CommentView.CommentViewModel>)ViewBag.ListComment;}
+@{var kh = Session["TaiKhoan2"]; }
+
+<div id="reviews">
+    @foreach (var item in Model)
+    {
+        if (item.ParentID == 0)
+        {
+
+            <ul class="reviews">
+
+                <div id="div_allcomment">
+                <li>
+
+
+                    <div class="review-heading">
+                        <h5 class="name">@item.CustomerName</h5>
+                        <p class="date">@item.CommentDate</p>
+                        <div class="review-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="review-body">
+                        <p>@item.CommentMsg</p>
+                    </div>
+
+
+
+
+                </li>
+        </div>
+        </ul>
+
+    }
+}
+    </div>

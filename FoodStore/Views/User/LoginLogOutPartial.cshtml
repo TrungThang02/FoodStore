@@ -1,6 +1,6 @@
 ﻿
 @using FoodStore.Models
-@{ Customer kh = (Customer)Session["TaiKhoan"]; }
+@{ var kh = Session["TaiKhoan"]; }
 
 
 
@@ -13,7 +13,7 @@
 else
 {
     <ul class="header-links pull-right">
-        <li><a href="#"><span class="fa fa-user"></span> Xin chào:@kh.CustomerName</a></li>
+        <li><a href="#"><span class="fa fa-user"></span> Xin chào:@kh</a></li>
         <li>
             <a href="@Url.Action("DangXuat","User")">
                 <span class="fa fa-sign-out "></span> Đăng xuất

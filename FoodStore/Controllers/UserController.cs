@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -146,7 +147,11 @@ namespace FoodStore.Controllers
                 if (kh != null)
                 {
                     ViewBag.ThongBao = "Chúc mừng bạn đăng nhập thành công";
-                    Session["TaiKhoan"] = kh;
+                    Session["TaiKhoan"] = kh.CustomerName;
+
+                    Session["TaiKhoan2"] = kh.CustomerId;
+                    Session["cmt"] = kh;
+
                     if (state == 1)
                     {
                         return RedirectToAction("Index", "Products");
@@ -175,6 +180,126 @@ namespace FoodStore.Controllers
             Session.Clear();
             return RedirectToAction("Index", "Products");
         }
+
+
+        [NonAction]
+        public void SendVerificationLinkEmail(string email, string activationCode, string emailFor = "VerifyAccount")
+        {
+            var verifyUrl = "/User/" + emailFor + "/" + activationCode;
+            var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
+
+            var fromEmail = new MailAddress("chuhaist123@gmail.com", "Cửa hàng TDT FoodStore");
+            var toEmail = new MailAddress(email);
+
+            string subject = "";
+            string body = "";
+
+            if (emailFor == "VerifyAccount")
+            {
+                subject = "Your account is successfully created";
+                body = "<br /><br /> We are  <a href='" + link + "'>" + link + "</a>";
+            }
+            else if (emailFor == "ResetPassword")
+            {
+                subject = "Reset Password";
+                body = "Chúng tôi xác nhận tài khoản này thuộc về bạn, vui lòng ấn vào <a href='" + link + "'> Khôi phục mật khẩu </a>";
+            }
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential(fromEmail.Address, "gvnggrtvigbpeihd")
+            };
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+
+
+
+        }
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        public ActionResult HttpNotFound()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ForgotPassword(string Email)
+        {
+            string message = "";
+            bool status = false;
+            var account = db.Customer.Where(a => a.Email == Email).FirstOrDefault();
+            if (account != null)
+            {
+                string resetCode = Guid.NewGuid().ToString();
+                SendVerificationLinkEmail(account.Email, resetCode, "ResetPassword");
+                account.ResetPasswordCode = resetCode;
+                db.SaveChanges();
+                message = "Liên kết khôi phục mật khẩu đã được gửi đến email của bạn <3";
+            }
+            else
+            {
+                message = "Không tìm thấy email";
+            }
+            ViewBag.Message = message;
+            return View();
+        }
+
+        public ActionResult ResetPassword(string id)
+        {
+            var user = db.Customer.Where(a => a.ResetPasswordCode == id).FirstOrDefault();
+            if (user != null)
+            {
+                ResetPassword model = new ResetPassword();
+                model.ResetCode = id;
+                return View(model);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPassword model)
+        {
+            var message = "";
+            if (ModelState.IsValid)
+            {
+                var user = db.Customer.Where(a => a.ResetPasswordCode == model.ResetCode).FirstOrDefault();
+                if (user != null)
+                {
+                    user.Password = Encrypt(model.NewPassword);
+                    user.ResetPasswordCode = "";
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.SaveChanges();
+                    message = "Thay đổi mật khẩu thành công";
+                  
+                }
+                return RedirectToAction("DangNhap", "User");
+            }
+            else
+            {
+                message = "Something invalid";
+            }
+            ViewBag.Message = message;
+            return View(model);
+        }
+
+
 
     }
 }

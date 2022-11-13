@@ -16,10 +16,13 @@ namespace FoodStore.Areas.Admin.Controllers
         FoodStoreEntities db = new FoodStoreEntities();
 
         // GET: Admin/Product
-        public ActionResult Index()
+
+
+
+        public JsonResult Index()
         {
             var product = db.Product.Include(p => p.Category);
-            return View(product.ToList());
+            return Json(JsonRequestBehavior.AllowGet);
         }
 
         // GET: Admin/Product/Details/5
@@ -103,15 +106,18 @@ namespace FoodStore.Areas.Admin.Controllers
             return View(sach);
         }
 
-        public ActionResult Delete(int id)
+        public JsonResult Delete(int id)
         {
-            var sach = db.Product.SingleOrDefault(n => n.ProductId == id);
-            if (sach == null)
+            try
             {
-                Response.StatusCode = 404;
-                return null;
+                var p = db.Product.SingleOrDefault(x => x.ProductId == id);
+                db.SaveChanges();
+                return Json(new { code = 200, msg = "Xóa thành công!" }, JsonRequestBehavior.AllowGet);
             }
-            return View(sach);
+            catch(Exception ex)
+            {
+                return Json(new { code = 500, msg = "Xóa thất bại!" }, JsonRequestBehavior.AllowGet);
+            }
         }
 
 

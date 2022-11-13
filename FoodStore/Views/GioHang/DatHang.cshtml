@@ -57,6 +57,16 @@
         width : 200px;
         object-fit : cover;
     }
+    .pay{
+        align-items : center;
+        display : flex;
+        justify-content : center;
+
+    }
+    .pay a{
+        margin : 20px;
+       
+    }
 </style>
 @foreach (var item in Model)
 {
@@ -195,7 +205,7 @@
 
 
 <h4 style="text-align:center">XÁC NHẬN THÔNG TIN</h4>
-@{ Customer kh = (Customer)Session["TaiKhoan"]; }
+@{ Customer kh = (Customer)Session["cmt"]; }
 
 <table align="center" style="margin : 0 auto">
     @using (Html.BeginForm())
@@ -213,14 +223,22 @@
             <input type="date" name="NgayGiao" @ViewData["err"] />
         </td>
     </tr>
+    <hr />
 
+    @*<div class="container">
+        <h4 style="text-align: center">Thanh toán khi nhận hàng</h4>
+        <button type="submit">Thanh toán</button>
+    </div>*@
 }
 
 
 
 </table>
-<div class="container gh">
-    <button class="btn btn-primary pd"><a style="color : white" href="@Url.Action("PaymentWithPaypal","PayPal")">Thanh toán PayPal</a></button>
-   
-    <button class="btn btn-primary pd"><a style="color : white" href="@Url.Action("Payment","Payment")">Thanh toán VNPAY</a></button>
+
+
+<h4 style="text-align: center">Thanh toán Online</h4>
+<div class="pay">
+
+    <a href="@Url.Action("Payment","Payment")"><img src="https://vnpay.vn/_nuxt/img/logo-primary.55e9c8c.svg" alt="Alternate Text" width="100px" /></a>
+    <a href="@Url.Action("PaymentWithPaypal","Paypal")"><img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="Alternate Text" width="100px" /></a>
 </div>

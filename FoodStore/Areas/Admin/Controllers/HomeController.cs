@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using FoodStore.Models;
 namespace FoodStore.Areas.Admin.Controllers
 {
-    public class FoodStoreController : Controller
+    public class HomeController : Controller
     {
         // GET: Admin/Home
         FoodStoreEntities db = new FoodStoreEntities();
@@ -32,7 +32,7 @@ namespace FoodStore.Areas.Admin.Controllers
             if (ad != null)
             {
                 Session["Admin"] = ad;
-                return RedirectToAction("Index", "FoodStore");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

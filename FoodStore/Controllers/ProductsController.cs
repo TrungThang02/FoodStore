@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using PagedList;
+using FoodStore.Models.CommentView;
 
 namespace FoodStore.Controllers
 {
@@ -93,12 +94,68 @@ namespace FoodStore.Controllers
 
         }
 
-        
-        public ActionResult ChiTIetSanPham(int? id)
+
+        public ActionResult ChiTIetSanPham(int id)
         {
             var ctsp = from s in db.Product where s.ProductId == id select s;
+
+
+
+
+            ViewBag.ListComment = new CommentDAO().ListCommentViewModel(0, id);
+
             return View(ctsp);
         }
-     
+
+        [ChildActionOnly]
+        public ActionResult _ChildComment(int parentid, int productid)
+        {
+            var data = new CommentDAO().ListCommentViewModel(parentid, productid);
+            var sessionUser = (Customer)Session["cmt"];
+
+
+            return PartialView("_ChildComment", data);
+        }
+
+
+        public JsonResult AddNewComment(int productid, int customerid, int parentid, string commentmsg, string rate)
+        {
+            try
+            {
+                var dao = new CommentDAO();
+                Comment comment = new Comment();
+
+
+                comment.CommentMsg = commentmsg;
+                comment.ProductId = productid;
+                comment.CustomerId = customerid;
+                comment.ParentID = parentid;
+                comment.Rate = Convert.ToInt16(rate);
+                comment.CommentDate = DateTime.Now;
+
+                bool addcomment = dao.Insert(comment);
+                if (addcomment == true)
+                {
+                    return Json(new { status = true }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch
+            {
+                return Json(new { status = true }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        public ActionResult GetComment(int productid)
+        {
+            var data = new CommentDAO().ListCommentViewModel(0, productid);
+            return PartialView("_ChildComment", data);
+        }
     }
+
+
 }

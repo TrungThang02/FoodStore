@@ -30,7 +30,7 @@ namespace FoodStore.Controllers
 
 
 
-        public ActionResult ThemGioHang(int idproduct, string url)
+        public JsonResult ThemGioHang(int idproduct)
         {
             List<GioHang> lstGioHang = LayGioHang();
             GioHang sp = lstGioHang.Find(n => n.productId == idproduct);
@@ -39,11 +39,8 @@ namespace FoodStore.Controllers
                 sp = new GioHang(idproduct);
                 lstGioHang.Add(sp);
             }
-            else
-            {
-                sp.productQuantity++;
-            }
-            return Redirect(url);
+
+            return Json(new { item = sp, success = true }, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -67,7 +64,7 @@ namespace FoodStore.Controllers
 
         public double getTongTien()
         {
-            return dTongTien;
+            return dTongTien + 30000;
         }
         public double TongTien()
         {
@@ -131,19 +128,19 @@ namespace FoodStore.Controllers
 
 
 
-        public ActionResult XoaSPKhoiGioHang(int iMaSach)
+        public JsonResult XoaSPKhoiGioHang(int productId)
         {
             List<GioHang> lstGioHang = LayGioHang();
-            GioHang sp = lstGioHang.SingleOrDefault(n => n.productId == iMaSach);
+            GioHang sp = lstGioHang.SingleOrDefault(n => n.productId == productId);
             if (sp != null)
             {
-                lstGioHang.RemoveAll(n => n.productId == iMaSach);
-                if (lstGioHang.Count == 0)
-                {
-                    return RedirectToAction("Index", "SACHes");
-                }
+                lstGioHang.RemoveAll(n => n.productId == productId);
+                //if (lstGioHang.Count == 0)
+                //{
+                //    return RedirectToAction("Index", "SACHes");
+                //}
             }
-            return RedirectToAction("GioHang");
+            return Json(new { item = sp }, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -223,8 +220,11 @@ namespace FoodStore.Controllers
                 db.OrderDetail.Add(ctdh);
             }
             db.SaveChanges();
+
             Session["GioHang"] = null;
             return RedirectToAction("XacNhanDonHang", "GioHang");
+
+           
 
 
 
