@@ -138,7 +138,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -398,7 +402,7 @@
     <Content Include="Areas\Admin\Content\images\sprites\red.png" />
     <Content Include="Areas\Admin\Content\images\sprites\yellow.png" />
     <Content Include="Areas\Admin\Content\js\ace.js" />
-    <Content Include="Areas\Admin\Content\js\alerts.js" />
+    <Content Include="Areas\Admin\Content\js\alertss.js" />
     <Content Include="Areas\Admin\Content\js\avgrund.js" />
     <Content Include="Areas\Admin\Content\js\bootstrap-table.js" />
     <Content Include="Areas\Admin\Content\js\bt-maxLength.js" />
@@ -2228,11 +2232,6 @@
     <Content Include="Areas\Admin\Content\ContentADMIN\scss\soft-ui-dashboard\_utilities-extend.scss" />
     <Content Include="Areas\Admin\Content\ContentADMIN\scss\soft-ui-dashboard\_utilities.scss" />
     <Content Include="Areas\Admin\Content\ContentADMIN\scss\soft-ui-dashboard\_variables.scss" />
-    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Content\ContentDN\assets\css\login.css.map" />
     <Content Include="Areas\Admin\Content\ContentDN\assets\scss\login.scss" />
@@ -2243,6 +2242,31 @@
     <Content Include="Models\FoodStore.edmx.diagram">
       <DependentUpon>FoodStore.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Cart.js" />
     <Content Include="Scripts\handlebars-v4.0.12.js" />

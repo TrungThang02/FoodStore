@@ -28,10 +28,42 @@
         .navbar-vertical.navbar-expand-xs .navbar-collapse {
             height: auto;
         }
+        .pagination {
+            width: 100%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+            .pagination .active > a {
+                background: red;
+                border-color: red;
+                width: 10px;
+                color : #fff;
+                height : 10px;
+            }
+
+            .pagination li, .pagination a {
+                margin: 0;
+                padding: 5px;
+                z-index: 0;
+                margin-top: 15px;
+                font-size: 15px;
+                font-weight: bold;
+                border-radius : 5px;
+                height : 10px;
+              
+            }
+
+        .main-nav > li > a {
+            padding: 20px 20px;
+            font-weight: 600;
+        }
+
     </style>
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show  render">
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -73,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/billing.html">
+                    <a class="nav-link  " href="@Url.Action("Index","Categories")">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>credit-card</title>
@@ -93,7 +125,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/virtual-reality.html">
+                    <a class="nav-link  " href="@Url.Action("Index","Orders")">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>box-3d-50</title>
@@ -114,7 +146,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/rtl.html">
+                    <a class="nav-link  " href="@Url.Action("Index","Comments")">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>settings</title>
@@ -131,12 +163,12 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Quản lý đơn đặt hàng</span>
+                        <span class="nav-link-text ms-1">Quản lý bình luận</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/profile.html">
+                    <a class="nav-link  " href="@Url.Action("Index","Customers")">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>customer-support</title>
@@ -168,7 +200,7 @@
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
 
-                    <h4 class="font-weight-bolder mb-0">TRANG QUẢN TRỊ HỆ THỐNG</h4>
+                    <h4 class="font-weight-bolder mb-0" style="text-align: center">TRANG QUẢN TRỊ HỆ THỐNG</h4>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -320,8 +352,8 @@
                     <p class="text-sm">Choose between 2 different sidenav types.</p>
                 </div>
                 <div class="d-flex">
-                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 " data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-white" onclick="sidebarType(this)">White</button>
                 </div>
                 <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
                 <!-- Navbar Fixed -->
@@ -532,7 +564,7 @@
         }
     </script>
     <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="~/Areas/Admin/Content/ContentADMIN/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 </body>

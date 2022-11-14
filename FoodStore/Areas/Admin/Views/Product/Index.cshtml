@@ -1,60 +1,137 @@
 ﻿
+@using FoodStore.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<FoodStore.Models.Product>
 
 @{
     ViewBag.Title = "Index";
-    
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    .fa-solid {
+        font-size: 20px;
+        padding: 10px;
+    }
 
-<h2>Index</h2>
+    .r {
+        color: red;
+    }
+
+    .g {
+        color: green;
+    }
+
+    .b {
+        color: cornflowerblue;
+    }
+
+    tr {
+        align-items: center;
+    }
+
+    td {
+        align-items: center;
+    }
+</style>
+<h5>Quản lý món ăn</h5>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm sản phẩm", "Create" ,null, new { @class ="btn btn-succses"})
 </p>
 <table class="table">
     <tr>
         <th>
-          Ten
+           Tên món
         </th>
         <th>
-           MO ta
+            Mô tả
         </th>
         <th>
-           Gia
+          Giá
         </th>
         <th>
-           Anh
+           Hình ảnh
         </th>
         <th>
-          Tên danh mục
+            Tên danh mục
         </th>
         <th></th>
     </tr>
 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
 
-    <tbody id="tblDslop">
-
-
-    </tbody>
+                <img src="~/Content/Images/@item.Image" width="200px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                <a href="/Admin/Product/Edit/@item.ProductId"><i class="fa-solid fa-pen-to-square b"></i></a>
+                <a href="/Admin/Product/Details/@item.ProductId"><i class="fa-solid fa-circle-info g"></i></a>
+                <a href="/Admin/Product/Delete/@item.ProductId" class="Delete"><i class="fa-solid fa-trash r"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>
 
-@section scripts{
-    <script>
-        $(document).ready(funtion(){
-            Load();
+
+
+<script>
+    $(document).on('click', '.Delete', function (e) {
+        var link = $(this).attr("href");
+        e.preventDefault();
+
+
+        bootbox.confirm({
+            title: "Xóa sản phẩm",
+            message: "Bạn có chắc chắn muốn xóa nó ?",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Hủy'
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Xóa'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    document.location.href = link;
+                }
+            }
         });
 
+    })
 
-        function Load() {
-            $.ajax({
-                url: '/Admin/Product/Index',
-                type: get,
-                success: function (data) {
-                    console.log(data)
-                   
-                }
-            })
-        }
-    </script>
-    
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.3/bootbox.min.js" integrity="sha512-U3Q2T60uOxOgtAmm9VEtC3SKGt9ucRbvZ+U3ac/wtvNC+K21Id2dNHzRUC7Z4Rs6dzqgXKr+pCRxx5CyOsnUzg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<div class="list">
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", "Product", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang {
+        margin-top: 500px;
+        display: inline;
+        text-align: center;
+        width: 100%;
     }
+</style>
