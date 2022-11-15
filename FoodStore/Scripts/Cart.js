@@ -94,7 +94,13 @@
                         //console.log($("#btn" + id)[0].disabled)
                     }
                 })
+            });
+        const navitem = document.querySelectorAll(".danhmuc");
+        navitem.forEach((item) => {
+            item.addEventListener('click', function () {
+                item.classList.add('active');
             })
+        })
 
 
 
