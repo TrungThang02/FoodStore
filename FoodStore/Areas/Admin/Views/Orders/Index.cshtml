@@ -5,13 +5,16 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h3>Quản lý đơn đặt hàng</h3>
+<h4>Quản lý đơn đặt hàng</h4>
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
 </p>*@
 <table class="table">
-    <tr>
+    <tr style="box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; ">
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.OrderDate)
         </th>
@@ -27,50 +30,49 @@
         <th>
             @Html.DisplayNameFor(model => model.RecipientPhone)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.OrderState)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.OrderPrice)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customer.CustomerName)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeliveryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipient)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipientPhone)
-        </td>
-        <td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeliveryDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Recipient)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RecipientPhone)
+    </td>
+    @*<td>
             @Html.DisplayFor(modelItem => item.OrderState)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.CustomerName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
-        </td>
-    </tr>
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderPrice)
+    </td>
+
+    <td>
+       
+        <a href="/Admin/Orders/Details/@item.OrderId"><i class="fa-solid fa-circle-info g"></i></a>
+        @*<a href="/Admin/Orders/Delete/@item.OrderId" class="Delete"><i class="fa-solid fa-trash r"></i></a>*@
+    </td>
+</tr>
 }
 
 </table>

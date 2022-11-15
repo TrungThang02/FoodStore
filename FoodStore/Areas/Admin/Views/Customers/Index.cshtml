@@ -8,10 +8,10 @@
 <h4>Quản lý khách hàng</h4>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 <table class="table">
-    <tr>
+    <tr style="box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; ">
         <th>
             @Html.DisplayNameFor(model => model.CustomerName)
         </th>
@@ -25,8 +25,8 @@
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
@@ -34,43 +34,44 @@
             @Html.DisplayNameFor(model => model.Phone)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.ResetPasswordCode)
-        </th>*@
+                @Html.DisplayNameFor(model => model.ResetPasswordCode)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ResetPasswordCode)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ResetPasswordCode)
+                </td>*@
+            <td>
+                <a href="/Admin/Customers/Edit/@item.CustomerId"><i class="fa-solid fa-pen-to-square b"></i></a>
+                <a href="/Admin/Customers/Details/@item.CustomerId"><i class="fa-solid fa-circle-info g"></i></a>
+                <a href="/Admin/Customers/Delete/@item.CustomerId" class="Delete"><i class="fa-solid fa-trash r"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>

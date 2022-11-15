@@ -98,24 +98,24 @@ namespace FoodStore.Areas.Admin.Controllers
         }
 
         // GET: Admin/Customers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customer.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Customer customer = db.Customer.Find(id);
+        //    if (customer == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(customer);
+        //}
 
         // POST: Admin/Customers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
             Customer customer = db.Customer.Find(id);
             db.Customer.Remove(customer);

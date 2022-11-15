@@ -103,24 +103,24 @@ namespace FoodStore.Areas.Admin.Controllers
         }
 
         // GET: Admin/Comments/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Comment comment = db.Comment.Find(id);
-            if (comment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(comment);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Comment comment = db.Comment.Find(id);
+        //    if (comment == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(comment);
+        //}
 
-        // POST: Admin/Comments/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        //// POST: Admin/Comments/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
             Comment comment = db.Comment.Find(id);
             db.Comment.Remove(comment);

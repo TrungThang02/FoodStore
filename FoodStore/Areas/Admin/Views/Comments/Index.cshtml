@@ -5,13 +5,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+
 <h3>Quản lý bình luận khách hàng</h3>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
-    <tr>
+    <tr style="box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; ">
         <th>
             @Html.DisplayNameFor(model => model.CommentMsg)
         </th>
@@ -21,9 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParentID)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.ParentID)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Rate)
         </th>
@@ -36,35 +35,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentMsg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParentID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.ProductName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentMsg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ParentID)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+
+                <a href="/Admin/Comments/Details/@item.ID"><i class="fa-solid fa-circle-info g"></i></a>
+                <a href="/Admin/Comments/Delete/@item.ID" class="Delete"><i class="fa-solid fa-trash r"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>

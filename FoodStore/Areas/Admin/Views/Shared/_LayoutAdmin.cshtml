@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <script src="~/Scripts/Delete.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.3/bootbox.min.js" integrity="sha512-U3Q2T60uOxOgtAmm9VEtC3SKGt9ucRbvZ+U3ac/wtvNC+K21Id2dNHzRUC7Z4Rs6dzqgXKr+pCRxx5CyOsnUzg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>
@@ -28,6 +30,7 @@
         .navbar-vertical.navbar-expand-xs .navbar-collapse {
             height: auto;
         }
+
         .pagination {
             width: 100%;
             z-index: 1;
@@ -39,8 +42,8 @@
                 background: red;
                 border-color: red;
                 width: 10px;
-                color : #fff;
-                height : 10px;
+                color: #fff;
+                height: 10px;
             }
 
             .pagination li, .pagination a {
@@ -50,16 +53,40 @@
                 margin-top: 15px;
                 font-size: 15px;
                 font-weight: bold;
-                border-radius : 5px;
-                height : 10px;
-              
+                border-radius: 5px;
+                height: 10px;
             }
 
         .main-nav > li > a {
             padding: 20px 20px;
             font-weight: 600;
         }
+    </style>
+    <style>
+        .fa-solid {
+            font-size: 20px;
+            padding: 10px;
+        }
 
+        .r {
+            color: red;
+        }
+
+        .g {
+            color: green;
+        }
+
+        .b {
+            color: cornflowerblue;
+        }
+
+        tr {
+            align-items: center;
+        }
+
+        td {
+            align-items: center;
+        }
     </style>
 </head>
 

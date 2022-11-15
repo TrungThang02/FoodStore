@@ -11,7 +11,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
+    <tr style="box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; ">
         <th>
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
@@ -21,20 +21,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryLink)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryLink)
+            </td>
+            <td>
+                <a href="/Admin/Categories/Edit/@item.CategoryId"><i class="fa-solid fa-pen-to-square b"></i></a>
+                <a href="/Admin/Categories/Details/@item.CategoryId"><i class="fa-solid fa-circle-info g"></i></a>
+                <a href="/Admin/Categories/Delete/@item.CategoryId" class="Delete"><i class="fa-solid fa-trash r"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>

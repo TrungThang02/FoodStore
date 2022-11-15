@@ -2601,6 +2601,7 @@
     <Content Include="Areas\Admin\Content\ckeditor\skins\moono-lisa\readme.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Cart.js" />
+    <Content Include="Scripts\Delete.js" />
     <Content Include="Scripts\handlebars-v4.0.12.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

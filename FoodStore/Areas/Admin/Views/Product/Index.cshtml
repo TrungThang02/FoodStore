@@ -7,50 +7,25 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-<style>
-    .fa-solid {
-        font-size: 20px;
-        padding: 10px;
-    }
 
-    .r {
-        color: red;
-    }
-
-    .g {
-        color: green;
-    }
-
-    .b {
-        color: cornflowerblue;
-    }
-
-    tr {
-        align-items: center;
-    }
-
-    td {
-        align-items: center;
-    }
-</style>
 <h5>Quản lý món ăn</h5>
 
 <p>
     @Html.ActionLink("Thêm sản phẩm", "Create" ,null, new { @class ="btn btn-succses"})
 </p>
 <table class="table">
-    <tr>
+    <tr style="box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; ">
         <th>
-           Tên món
+            Tên món
         </th>
         <th>
             Mô tả
         </th>
         <th>
-          Giá
+            Giá
         </th>
         <th>
-           Hình ảnh
+            Hình ảnh
         </th>
         <th>
             Tên danh mục
@@ -88,38 +63,6 @@
 </table>
 
 
-
-<script>
-    $(document).on('click', '.Delete', function (e) {
-        var link = $(this).attr("href");
-        e.preventDefault();
-
-
-        bootbox.confirm({
-            title: "Xóa sản phẩm",
-            message: "Bạn có chắc chắn muốn xóa nó ?",
-            buttons: {
-                cancel: {
-                    label: '<i class="fa fa-times"></i> Hủy'
-                },
-                confirm: {
-                    label: '<i class="fa fa-check"></i> Xóa'
-                }
-            },
-            callback: function (result) {
-                if (result) {
-                    document.location.href = link;
-                }
-            }
-        });
-
-    })
-
-
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.3/bootbox.min.js" integrity="sha512-U3Q2T60uOxOgtAmm9VEtC3SKGt9ucRbvZ+U3ac/wtvNC+K21Id2dNHzRUC7Z4Rs6dzqgXKr+pCRxx5CyOsnUzg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 <div class="list">
