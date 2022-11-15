@@ -183,14 +183,15 @@ namespace FoodStore.Controllers
         [HttpPost]
         public ActionResult DatHang(FormCollection f)
         {
-            Order ddh = new Order();
-            Customer kh = (Customer)Session["TaiKhoan"];
+            Orders ddh = new Orders();
+            Customer kh = (Customer)Session["cmt"];
             List<GioHang> lstGioHang = LayGioHang();
             //.NullReferenceException
             if (kh.CustomerId != null)
             {
                 try
                 {
+                    
                     ddh.CustomerId = kh.CustomerId;
                     ddh.DeliveryDate = DateTime.Now;
 
@@ -199,7 +200,7 @@ namespace FoodStore.Controllers
 
 
 
-                    db.Order.Add(ddh);
+                    db.Orders.Add(ddh);
                     db.SaveChanges();
                 }
                 catch (NullReferenceException e)
@@ -230,7 +231,10 @@ namespace FoodStore.Controllers
 
         }
 
-
+        public ActionResult ThanhToan()
+        {
+            return View();
+        }
 
         public ActionResult XacNhanDonHang()
         {

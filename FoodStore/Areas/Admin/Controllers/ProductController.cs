@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,10 +21,19 @@ namespace FoodStore.Areas.Admin.Controllers
 
         public ActionResult Index(int? page)
         {
-            int iSize = 5;
-            int iPageNum = (page ?? 1);
-            var product = db.Product.Include(p => p.Category).ToList();
-            return View(product.OrderBy(x=>x.ProductId).ToPagedList(iPageNum, iSize));
+            if (Session["Admin"] == null)
+            {
+                
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+                int iSize = 5;
+                int iPageNum = (page ?? 1);
+                var product = db.Product.Include(p => p.Category).ToList();
+                return View(product.OrderBy(x => x.ProductId).ToPagedList(iPageNum, iSize));
+            }
+            
         }
 
         // GET: Admin/Products/Details/5
@@ -41,14 +51,14 @@ namespace FoodStore.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/Products/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName");
             return View();
         }
 
-        // POST: Admin/Products/Create
+        // POST: Admin/Productstt/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -66,7 +76,7 @@ namespace FoodStore.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/Products/Edit/5
+        // GET: Admin/Productstt/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,7 +92,7 @@ namespace FoodStore.Areas.Admin.Controllers
             return View(product);
         }
 
-        // POST: Admin/Products/Edit/5
+        // POST: Admin/Productstt/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -99,6 +109,7 @@ namespace FoodStore.Areas.Admin.Controllers
             return View(product);
         }
 
+        // GET: Admin/Productstt/Delete/5
         // GET: Admin/Products/Delete/5
         //public ActionResult Delete(int? id)
         //{

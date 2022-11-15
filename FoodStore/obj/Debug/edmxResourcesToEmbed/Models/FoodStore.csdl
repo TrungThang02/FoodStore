@@ -49,23 +49,7 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="ResetPasswordCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
-  </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="OrderId" />
-    </Key>
-    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerId" Type="Int32" />
-    <Property Name="OrderDate" Type="DateTime" Precision="0" />
-    <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
-    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Recipient" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="RecipientPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="OrderState" Type="Boolean" />
-    <Property Name="OrderPrice" Type="Decimal" Precision="19" Scale="4" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
-    <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+    <NavigationProperty Name="Orders" Relationship="FoodStoreModel.FK_Order_Customer1" FromRole="Customer" ToRole="Orders" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
@@ -76,8 +60,8 @@
     <Property Name="ProductId" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Decimal" Precision="9" Scale="2" />
     <Property Name="Quantity" Type="Int32" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
     <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetail_Product" FromRole="OrderDetail" ToRole="Product" />
+    <NavigationProperty Name="Orders" Relationship="FoodStoreModel.FK_OrderDetail_Order1" FromRole="OrderDetail" ToRole="Orders" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -136,30 +120,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_Customer">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="CustomerId" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderDetail_Order">
-    <End Role="Order" Type="Self.Order" Multiplicity="1" />
-    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Order">
-        <PropertyRef Name="OrderId" />
-      </Principal>
-      <Dependent Role="OrderDetail">
-        <PropertyRef Name="OrderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_OrderDetail_Product">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
     <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -177,7 +137,6 @@
     <EntitySet Name="Category" EntityType="Self.Category" />
     <EntitySet Name="Comment" EntityType="Self.Comment" />
     <EntitySet Name="Customer" EntityType="Self.Customer" />
-    <EntitySet Name="Order" EntityType="Self.Order" />
     <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
     <EntitySet Name="Product" EntityType="Self.Product" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -190,17 +149,58 @@
       <End Role="Product" EntitySet="Product" />
       <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
-      <End Role="Customer" EntitySet="Customer" />
-      <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
-      <End Role="Order" EntitySet="Order" />
-      <End Role="OrderDetail" EntitySet="OrderDetail" />
-    </AssociationSet>
     <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="OrderDetail" EntitySet="OrderDetail" />
     </AssociationSet>
+    <EntitySet Name="Orders" EntityType="FoodStoreModel.Orders" />
+    <AssociationSet Name="FK_Order_Customer1" Association="FoodStoreModel.FK_Order_Customer1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Order1" Association="FoodStoreModel.FK_OrderDetail_Order1">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Recipient" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="RecipientPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="OrderState" Type="Boolean" />
+    <Property Name="OrderPrice" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Customer" Relationship="FoodStoreModel.FK_Order_Customer1" FromRole="Orders" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetail" Relationship="FoodStoreModel.FK_OrderDetail_Order1" FromRole="Orders" ToRole="OrderDetail" />
+  </EntityType>
+  <Association Name="FK_Order_Customer1">
+    <End Type="FoodStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="FoodStoreModel.Orders" Role="Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Order1">
+    <End Type="FoodStoreModel.Orders" Role="Orders" Multiplicity="1" />
+    <End Type="FoodStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

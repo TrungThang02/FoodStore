@@ -17,8 +17,16 @@ namespace FoodStore.Areas.Admin.Controllers
         // GET: Admin/Comments
         public ActionResult Index()
         {
-            var comment = db.Comment.Include(c => c.Product);
-            return View(comment.ToList());
+            if (Session["Admin"] == null)
+            {
+
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+                var comment = db.Comment.Include(c => c.Product);
+                return View(comment.ToList());
+            }
         }
 
         // GET: Admin/Comments/Details/5

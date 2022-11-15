@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\DoAnLapTrinhWeb\FoodStore\FoodStore\Models\FoodStore.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\DoAnLapTrinhWeb\TrungThang02\FoodStore\FoodStore\Models\FoodStore.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

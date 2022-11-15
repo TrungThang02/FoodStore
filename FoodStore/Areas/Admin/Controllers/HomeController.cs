@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,10 +13,29 @@ namespace FoodStore.Areas.Admin.Controllers
         FoodStoreEntities db = new FoodStoreEntities();
         public ActionResult Index()
         {
-            return View();
-        }
+            if (Session["Admin"] == null)
+            {
 
-        
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+                var tdh = (from t in db.Orders select t.OrderId).Count();
+                ViewBag.TongDonHang = tdh;
+
+                var ttk = (from c in db.Customer select c.CustomerId).Count();
+                ViewBag.TongSoTaiKhoan = ttk;
+
+                var tt = (from t in db.OrderDetail select t.Price).Sum();
+                ViewBag.TongTien = tt;
+
+                var tsp = (from p in db.Product select p.ProductId).Count();
+                ViewBag.TongSoSanPham = tsp;
+                return View();
+            }
+        }
+ 
+      
         
         [HttpGet]
         public ActionResult DangNhap()

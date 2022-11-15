@@ -17,7 +17,15 @@ namespace FoodStore.Areas.Admin.Controllers
         // GET: Admin/Customers
         public ActionResult Index()
         {
-            return View(db.Customer.ToList());
+            if (Session["Admin"] == null)
+            {
+
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+                return View(db.Customer.ToList());
+            }
         }
 
         // GET: Admin/Customers/Details/5

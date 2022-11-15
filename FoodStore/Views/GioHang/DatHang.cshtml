@@ -8,65 +8,69 @@
         align-items: center;
         display: flex;
         justify-content: center;
-        margin-top : 2rem;
+        margin-top: 2rem;
     }
-    .pd{
-        margin-left : 20px;
+
+    .pd {
+        margin-left: 20px;
     }
-    .td{
-        display : flex;
-        align-items : center;
+
+    .td {
+        display: flex;
+        align-items: center;
     }
-    .td img{
-        
-        align-items : center;
-        border-radius : 1rem;
+
+        .td img {
+            align-items: center;
+            border-radius: 1rem;
+        }
+
+    .table-borderless {
+        align-items: center;
+        margin: 0;
     }
-    .table-borderless{
-        align-items : center;
-        margin : 0;
-        
-       
+
+    .name {
+        display: block;
+        align-items: center;
+        margin: 0;
+        justify-content: center;
+        width: 100%;
     }
-    .name{
-        display : block;
-        align-items : center;
-       margin: 0;
-       justify-content : center;
-       width : 100%;
-       
+
+    .textgh {
+        align-items: center;
     }
-    .textgh{
-        align-items : center;
-    }
-    .tx2{
+
+    .tx2 {
         font-weight: 500;
         font-size: 15px;
-        margin-right : 25px;
-        font-weight : bold;
-        color : red;
-       
+        margin-right: 25px;
+        font-weight: bold;
+        color: red;
     }
+
     .tx1 {
         padding: 25px;
         font-weight: 500;
         font-size: 17px;
     }
-    .img-gh{
-        height : 100px;
-        width : 200px;
-        object-fit : cover;
-    }
-    .pay{
-        align-items : center;
-        display : flex;
-        justify-content : center;
 
+    .img-gh {
+        height: 100px;
+        width: 200px;
+        object-fit: cover;
     }
-    .pay a{
-        margin : 20px;
-       
+
+    .pay {
+        align-items: center;
+        display: flex;
+        justify-content: center;
     }
+
+        .pay a {
+            margin: 20px;
+        }
 </style>
 @foreach (var item in Model)
 {
@@ -97,7 +101,7 @@
                                                 <div class="textgh">
                                                     <span class="font-weight-bold tx tx1">Số lượng : @item.productQuantity</span>
                                                 </div>
-                                            
+
                                             </div>
                                         </td>
                                         <td width="20%" style="vertical-align: inherit">
@@ -204,41 +208,40 @@
             </div>
 
 
-<h4 style="text-align:center">XÁC NHẬN THÔNG TIN</h4>
+
 @{ Customer kh = (Customer)Session["cmt"]; }
 
 <table align="center" style="margin : 0 auto">
     @using (Html.BeginForm())
     {@Html.ValidationSummary(true)
-    <tr style="height:40px;"><td>Họ tên khách hàng:</td><td style="font-weight:bold">@kh.CustomerName</td></tr>
-    <tr style="height:40px;"><td>Địa chỉ:</td><td style="font-weight:bold">@kh.Address</td></tr>
-    <tr style="height:40px;"><td>Điện thoại:</td><td style="font-weight:bold">@kh.Phone</td></tr>
-    <tr style="height:40px;">
-        <td>Ngày đặt:</td>
-        <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
-    </tr>
-    <tr style="height:40px;">
-        <td>Ngày giao:</td>
-        <td style="font-weight:bold">
-            <input type="date" name="NgayGiao" @ViewData["err"] />
-        </td>
-    </tr>
-    <hr />
+    @*<tr style="height:40px;"><td>Họ tên khách hàng:</td><td style="font-weight:bold">@kh.CustomerName</td></tr>
+        <tr style="height:40px;"><td>Địa chỉ:</td><td style="font-weight:bold">@kh.Address</td></tr>
+        <tr style="height:40px;"><td>Điện thoại:</td><td style="font-weight:bold">@kh.Phone</td></tr>
+        <tr style="height:40px;">
+            <td>Ngày đặt:</td>
+            <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Ngày giao:</td>
+            <td style="font-weight:bold">
+                <input type="date" name="NgayGiao" @ViewData["err"] />
+            </td>
+        </tr>*@
 
-    @*<div class="container">
-        <h4 style="text-align: center">Thanh toán khi nhận hàng</h4>
-        <button type="submit">Thanh toán</button>
-    </div>*@
+    <center>
+        <button type="submit" class="btn btn-success">TIẾP TỤC THANH TOÁN</button>
+    </center>
 }
 
 
+    @*</table>*@
 
-</table>
 
 
-<h4 style="text-align: center">Thanh toán Online</h4>
-<div class="pay">
+    <h4 style="text-align: center">Thanh toán Online</h4>
+    <div class="pay">
 
-    <a href="@Url.Action("Payment","Payment")"><img src="https://vnpay.vn/_nuxt/img/logo-primary.55e9c8c.svg" alt="Alternate Text" width="100px" /></a>
-    <a href="@Url.Action("PaymentWithPaypal","Paypal")"><img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="Alternate Text" width="100px" /></a>
-</div>
+        <a href="@Url.Action("Payment","Payment")"><img src="https://vnpay.vn/_nuxt/img/logo-primary.55e9c8c.svg" alt="Alternate Text" width="100px" /></a>
+        <a href="@Url.Action("PaymentWithPaypal","Paypal")"><img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="Alternate Text" width="100px" /></a>
+        <a href="@Url.Action("Payment","MoMo")"><img src="https://images.viblo.asia/ae87b957-f016-45c0-9c29-34b34a9b3262.png" alt="Alternate Text" width="100px" /></a>
+    </div>

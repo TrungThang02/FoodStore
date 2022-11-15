@@ -17,8 +17,16 @@ namespace FoodStore.Areas.Admin.Controllers
         // GET: Admin/Orders
         public ActionResult Index()
         {
-            var order = db.Order.Include(o => o.Customer);
-            return View(order.ToList());
+            if (Session["Admin"] == null)
+            {
+
+                return RedirectToAction("DangNhap", "Home");
+            }
+            else
+            {
+                var order = db.Orders.Include(o => o.Customer);
+                return View(order.ToList());
+            }
         }
 
         // GET: Admin/Orders/Details/5
@@ -28,7 +36,7 @@ namespace FoodStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Order.Find(id);
+            Orders order = db.Orders.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -48,11 +56,11 @@ namespace FoodStore.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,CustomerId,OrderDate,DeliveryDate,Address,Recipient,RecipientPhone,OrderState,OrderPrice")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,CustomerId,OrderDate,DeliveryDate,Address,Recipient,RecipientPhone,OrderState,OrderPrice")] Orders order)
         {
             if (ModelState.IsValid)
             {
-                db.Order.Add(order);
+                db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -68,7 +76,7 @@ namespace FoodStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Order.Find(id);
+            Orders order = db.Orders.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -82,7 +90,7 @@ namespace FoodStore.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,OrderDate,DeliveryDate,Address,Recipient,RecipientPhone,OrderState,OrderPrice")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,OrderDate,DeliveryDate,Address,Recipient,RecipientPhone,OrderState,OrderPrice")] Orders order)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +109,7 @@ namespace FoodStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Order.Find(id);
+            Orders order = db.Orders.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -114,8 +122,8 @@ namespace FoodStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Order.Find(id);
-            db.Order.Remove(order);
+            Orders order = db.Orders.Find(id);
+            db.Orders.Remove(order);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
