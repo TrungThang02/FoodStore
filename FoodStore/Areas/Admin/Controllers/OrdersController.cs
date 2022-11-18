@@ -24,7 +24,7 @@ namespace FoodStore.Areas.Admin.Controllers
             }
             else
             {
-                var order = db.Orders.Include(o => o.Customer);
+                var order = db.Orders.Include(o => o.OrderDetail).Include(o => o.Customer);
                 return View(order.ToList());
             }
         }

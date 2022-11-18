@@ -2660,8 +2660,8 @@
     <Content Include="Views\Paypal\FailureView.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Comments\CommentPartial.cshtml" />
-    <Content Include="Views\Shared\_ChildComment.cshtml" />
     <Content Include="Views\Momo\ConfirmPaymentClient.cshtml" />
+    <Content Include="Views\Shared\_ChildComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

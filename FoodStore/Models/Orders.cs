@@ -38,9 +38,11 @@ namespace FoodStore.Models
         public Nullable<bool> OrderState { get; set; }
         [DisplayName("Giá tiền")]
         public Nullable<decimal> OrderPrice { get; set; }
-    
+
         public virtual Customer Customer { get; set; }
+        public virtual OrderDetail OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
-    }
+    
+}
 }

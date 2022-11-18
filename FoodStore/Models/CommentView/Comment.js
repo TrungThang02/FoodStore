@@ -13,27 +13,25 @@
             var commentmsg = document.getElementById("txtCommentNew");
             var rate = document.getElementById('dllRate');
 
-            if (customerid == ""){
+            if (customerid == "") {
                 bootbox.alert({
                     message: "Vui lòng đăng nhập để bình luận",
                     callback: function () {
-                        window.location.href = "https://localhost:44317/User/DangNhap?id=1";
+                        window.location.href = "https://localhost:44317/User/DangNhap?id=" + productid;
                     }
                 })
-               
-                return 
+
+                return
             }
-            if (commentmsg.value == "") {
+            if (String(commentmsg.value).trim() == "") {
                 bootbox.alert("Chưa nhập nội dung bình luận")
                 return
             }
 
- 
 
             $.ajax({
                 url: '/Products/AddNewComment',
                 data: {
-
                     productid: productid,
                     customerid: customerid,
                     parentid: 0,
@@ -43,14 +41,17 @@
                 dataType: 'json',
                 type: "GET",
                 success: function (res) {
+
                     if (res.status == true) {
                         //bootbox.alert({
                         //    message: "Bạn đã thêm bình luận thành công",
                         //    size: 'medium',
                         //    closeButton: false
                         //});
+                        $("#reviews").load("https://localhost:44317/Products/GetComment/?productid=" + productid)
 
-                        $("#div_allcomment").load("/Products/GetComment/?productid=" + productid);
+                        $("#txtCommentNew").val("");
+                        return false;
                     } else {
                         bootbox.alert({
                             message: "Thêm bình luận không thành công",

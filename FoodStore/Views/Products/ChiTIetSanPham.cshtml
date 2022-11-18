@@ -5,6 +5,34 @@
 
 
 }
+<style>
+   
+    .text-warning, .list-inline > li {
+        color: red;
+        margin: 0;
+        padding: 0;
+        
+    }
+    .list-inline{
+        margin-left : 0;
+    }
+
+    #txtCommentNew, select {
+        border-radius: 10px;
+    }
+    select{
+        padding : 5px;
+    }
+    textarea.input{
+        width : 300px;
+        float : right;
+    }
+    .review-form{
+       
+        justify-content : center;
+        align-items : center;
+    }
+</style>
 
 @{ var listcomment = (List<FoodStore.Models.CommentView.CommentViewModel>)ViewBag.ListComment;}
 @{var kh = Session["TaiKhoan2"]; }
@@ -77,8 +105,8 @@
                                 Số lượng
                                 <div class="input-number">
                                     <input type="number" name="step" id="" value="1" min="1" max="10" step="1">
-                                   <span class="qty-up">+</span>
-                                        <span class="qty-down">-</span>
+                                    <span class="qty-up">+</span>
+                                    <span class="qty-down">-</span>
                                 </div>
                             </div>
                             @*<div class="add-to-cart">*@
@@ -101,15 +129,15 @@
                     <div id="product-tab">
                         <!-- product tab nav -->
                         <ul class="tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1" aria-expanded="false">Mô tả sản phẩm</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab1" aria-expanded="false">Mô tả sản phẩm</a></li>
 
-                            <li class=""><a data-toggle="tab" href="#tab3" aria-expanded="true">Đánh giá khách hàng</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab3" aria-expanded="true">Đánh giá khách hàng</a></li>
                         </ul>
                         <!-- /product tab nav -->
                         <!-- product tab content -->
                         <div class="tab-content">
                             <!-- tab1  -->
-                            <div id="tab1" class="tab-pane fade in active">
+                            <div id="tab1" class="tab-pane fade">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p class="product-description">@ctsp.Description</p>
@@ -120,7 +148,7 @@
                             <!-- tab2  -->
                             <!-- /tab2  -->
                             <!-- tab3  -->
-                            <div id="tab3" class="tab-pane fade">
+                            <div id="tab3" class="tab-pane fade in active">
                                 <div class="row">
                                     <!-- Rating -->
                                     <div class="col-md-3">
@@ -206,89 +234,55 @@
                                     </div>
                                     <!-- /Rating -->
                                     <!-- Reviews -->
-                                    <div class="col-md-6">
-                                        <div id="reviews">
-                                            @foreach (var item in ViewBag.ListComment)
-                                            {
-                                                if (item.ParentID == 0)
-                                                {
-
-                                                    <ul class="reviews">
-
-                                                        <div id="div_allcomment">
-                                                        <li>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                             @{ Html.RenderAction("GetComment", "Products", new { productid = ctsp.ProductId });}
+                                        </div>
 
 
-                                                            <div class="review-heading">
-                                                                <h5 class="name">@item.CustomerName</h5>
-                                                                <p class="date">@item.CommentDate</p>
-                                                                <div class="review-rating">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
+
+                                  <div class="row">
+                                            <div class="col-md-3 b">
+                                                <div id="review-form">
+                                                    <form class="review-form">
+
+                                                        <textarea class="input" id="txtCommentNew" placeholder="Nhập nội dung"></textarea>
+                                                        <div class="input-rating">
+                                                            <span>Đánh giá: </span>
+                                                            <div class="stars">
+                                                                <select id="dllRate" class="form-select form-control-sm">
+                                                                    <option value="5" selected="">-----★★★★★(5/5)-----</option>
+                                                                    <option value="4">-----★★★★☆(4/5)-----</option>
+                                                                    <option value="3">-----★★★☆☆(3/5)-----</option>
+                                                                    <option value="2">-----★★☆☆☆(2/5)-----</option>
+                                                                    <option value="1">-----★☆☆☆☆(1/5)-----</option>
+
+                                                                </select>
+
                                                             </div>
-                                                            <div class="review-body">
-                                                                <p>@item.CommentMsg</p>
-                                                            </div>
-
-
-
-
-                                                        </li>
+                                                        </div>
+                                                        <div style="display: flex; justify-content : center;width : 100%">
+                                                            <button type="button" class="btn primary-btn block" id="btnCommentNew" data-productId="@ctsp.ProductId" data-customerid="@kh" style="width : 200px">Gửi đánh giá</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                </ul>
-                                                { Html.RenderAction("_ChildComment", "Products", new { parentid = item.ParentID, productid = item.ProductId }); }
-                                            }
-                                        }
+                                            </div>
+                                            <!-- /Review Form -->
                                         </div>
                                     </div>
-                                    <!-- /Reviews -->
-                                    <!-- Review Form -->
-                                    <div class="col-md-3">
-                                        <div id="review-form">
-                                            <form class="review-form">
-
-                                                <textarea class="input" id="txtCommentNew" placeholder="Nhập nội dung"></textarea>
-                                                <div class="input-rating">
-                                                    <span>Đánh giá: </span>
-                                                    <div class="stars">
-                                                        <select id="dllRate" class="form-select form-control-sm">
-                                                            <option value="5" selected="">★★★★★(5/5)</option>
-                                                            <option value="4">★★★★☆(4/5)</option>
-                                                            <option value="3">★★★☆☆(3/5)</option>
-                                                            <option value="2">★★☆☆☆(2/5)</option>
-                                                            <option value="2">★☆☆☆☆(1/5)</option>
-
-                                                        </select>
-                                                        @*<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-                                                        <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-                                                        <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-                                                        <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-                                                        <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>*@
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="primary-btn" id="btnCommentNew" data-productId="@ctsp.ProductId" data-customerid="@kh">Gửi đánh giá</button>
-                                            </form>
-                                        </div>
                                     </div>
-                                    <!-- /Review Form -->
-                                </div>
-                            </div>
+                                    </div>
                             <!-- /tab3  -->
                         </div>
                         <!-- /product tab content  -->
                     </div>
                 </div>
-                <!-- /product tab -->
             </div>
-            <!-- /row -->
         </div>
+
     }
     <!-- /container -->
-    </div>
+</div>
 
     @section script{
 

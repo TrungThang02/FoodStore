@@ -99,10 +99,7 @@ namespace FoodStore.Controllers
         public ActionResult GioHang()
         {
             List<GioHang> lstGioHang = LayGioHang();
-            if (lstGioHang.Count == 0)
-            {
-                return RedirectToAction("Index", "Products");
-            }
+            
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
             return View(lstGioHang);
@@ -161,7 +158,7 @@ namespace FoodStore.Controllers
         {
             if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
             {
-                return Redirect("~/User/DangNhap?id=2");
+                return Redirect("~/User/DangNhap");
             }
             if (Session["GioHang"] == null)
             {
@@ -185,6 +182,7 @@ namespace FoodStore.Controllers
         public ActionResult DatHang(FormCollection f)
         {
             Orders ddh = new Orders();
+            OrderDetail ct = new OrderDetail();
             Customer kh = (Customer)Session["cmt"];
             List<GioHang> lstGioHang = LayGioHang();
             //.NullReferenceException
@@ -194,10 +192,19 @@ namespace FoodStore.Controllers
                 {
                     
                     ddh.CustomerId = kh.CustomerId;
-                    ddh.DeliveryDate = DateTime.Now;
-
+                    
+                    ddh.OrderDate = DateTime.Now;
+                    ddh.Address = kh.Address;
+                    ddh.RecipientPhone = kh.Phone;
+               
                     var NgayGiao = String.Format("{0:MM/mm/yyyy}", f["NgayGiao"]);
+                    ddh.DeliveryDate = DateTime.Parse(NgayGiao);
 
+
+                    var giatien = ct.Price ;
+                    ddh.OrderPrice = giatien;
+
+                    
 
 
 

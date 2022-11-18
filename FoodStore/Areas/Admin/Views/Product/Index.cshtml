@@ -7,14 +7,50 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+@*@helper  Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}*@
+
+
+<style>
+    .img {
+        border-radius: 10px;
+        height: 110px;
+        object-fit: cover;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    }
+
+    td {
+        vertical-align: baseline;
+        align-items: center;
+    }
+
+    th {
+        font-weight: bolder;
+    }
+    p {
+        width: 300px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
 
 <h5>Quản lý món ăn</h5>
 
 <p>
-    @Html.ActionLink("Thêm sản phẩm", "Create", null, new { @class = "btn btn-succses" })
+    @Html.ActionLink("Thêm món mới", "Create", null, new { @class = "btn btn-succses" })
 </p>
 <table class="table">
-    <tr style="box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; ">
+    <tr style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; padding: 10px; border-radius: 5px ">
         <th>
             Tên món
         </th>
@@ -40,14 +76,14 @@
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                <p> @Html.Raw(item.Description).ToString())</p>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
 
-                <img src="~/Content/Images/@item.Image" width="200px" />
+                <img src="~/Content/Images/@item.Image" width="200px" class="img" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
@@ -70,6 +106,7 @@
         @Html.PagedListPager(Model, page => Url.Action("Index", "Product", new { page = page }))
     </div>
 </div>
+<script src="~/Scripts/Delete.js"></script>
 <style>
     .MenuTrang {
         margin-top: 500px;

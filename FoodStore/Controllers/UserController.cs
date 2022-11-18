@@ -156,6 +156,10 @@ namespace FoodStore.Controllers
                     {
                         return RedirectToAction("Index", "Products");
                     }
+                    else if(state >= 2 && state < db.Product.Max(p => p.ProductId))
+                    {
+                        return RedirectToAction("ChiTIetSanPham/" + state, "Products");
+                    }
                     else
                     {
                         return RedirectToAction("DatHang", "GioHang");

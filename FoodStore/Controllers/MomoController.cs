@@ -1,4 +1,5 @@
-﻿using FoodStore.Momo;
+﻿using FoodStore.Models;
+using FoodStore.Momo;
 using MoMo;
 using Newtonsoft.Json.Linq;
 using System;
@@ -12,6 +13,7 @@ namespace FoodStore.Controllers
     public class MomoController : Controller
     {
         GioHangController g = new GioHangController();
+        FoodStoreEntities db = new FoodStoreEntities();
         // GET: MomoGio
         public ActionResult Index()
         {
@@ -82,14 +84,48 @@ namespace FoodStore.Controllers
             string rMessage = result.message;
             string rOrderId = result.orderId;
             string rErrorCode = result.errorCode; // = 0: thanh toán thành công
+            Session["GioHang"] = null;
+
+            ViewBag.rMessage = result.message;
+            ViewBag.rOrderId = result.orderId;
+            ViewBag.rErrorCode = result.errorCode;
             return View();
         }
 
         [HttpPost]
-        public void SavePayment()
+        public void SavePayment(FormCollection f)
         {
-            //cập nhật dữ liệu vào db
-            String a = "";
+            Orders ddh = new Orders();
+            OrderDetail ct = new OrderDetail();
+            Customer kh = (Customer)Session["cmt"];
+
+            if (kh.CustomerId != null)
+            {
+              
+
+                    ddh.CustomerId = kh.CustomerId;
+
+                    ddh.OrderDate = DateTime.Now;
+                    ddh.Address = kh.Address;
+                    ddh.RecipientPhone = kh.Phone;
+
+                    var NgayGiao = String.Format("{0:MM/mm/yyyy}", f["NgayGiao"]);
+                    ddh.DeliveryDate = DateTime.Parse(NgayGiao);
+
+
+                    var giatien = ct.Price;
+                    ddh.OrderPrice = giatien;
+
+
+
+
+
+                    db.Orders.Add(ddh);
+                    db.SaveChanges();
+                }
+
+
+
         }
     }
 }

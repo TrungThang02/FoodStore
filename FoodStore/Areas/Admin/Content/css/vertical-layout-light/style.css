@@ -12968,7 +12968,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   .navbar-expand-sm .offcanvas {
     position: inherit;
     bottom: 0;
-    z-index: 1000;
+  /*  z-index: 1000;*/
     flex-grow: 1;
     visibility: visible !important;
     background-color: transparent;
@@ -13022,7 +13022,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   .navbar-expand-md .offcanvas {
     position: inherit;
     bottom: 0;
-    z-index: 1000;
+/*    z-index: 1000;*/
     flex-grow: 1;
     visibility: visible !important;
     background-color: transparent;

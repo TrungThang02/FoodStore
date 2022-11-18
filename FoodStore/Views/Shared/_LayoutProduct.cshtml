@@ -106,6 +106,7 @@
 
 </head>
 <body>
+
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->
@@ -156,7 +157,7 @@
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
                             <h3 class="footer-title">VỀ CHÚNG TÔI</h3>
-                            <p>FoodShop.</p>
+                            <p>FoodShop</p>
                             <ul class="footer-links">
                                 <li><a href="#"><i class="fa fa-map-marker"></i>Số 6, Trần Văn Ơn, Phường Phú Hòa, TP. Thủ Dầu Một, Tỉnh Bình Dương</a></li>
                                 <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
@@ -169,11 +170,13 @@
                         <div class="footer">
                             <h3 class="footer-title">DANH MỤC SẢN PHẨM</h3>
                             <ul class="footer-links">
-                                <li><a href="#">Hot deals</a></li>
-                                <li><a href="#">Laptops</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Cameras</a></li>
-                                <li><a href="#">Accessories</a></li>
+                                <li><a href="@Url.Action("DoChay","Products")">Thức ăn chay</a></li>
+                                <li><a href="@Url.Action("DoAnNhanh","Products")">Thức ăn nhanh</a></li>
+                                <li><a href="@Url.Action("DoUong","Products")">Đồ uống</a></li>
+                                <li><a href="@Url.Action("Lau","Products")">Lẩu</a></li>
+                                <li><a href="@Url.Action("HaiSan","Products")">Hải sản</a></li>
+                                <li><a href="@Url.Action("HoaQua","Products")">Hoa quả</a></li>
+                                <li><a href="@Url.Action("DoNuong","Products")">Đồ nướng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -218,7 +221,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
 
-                        <span class="copyright" style="color:#fff">
+                        <span class="copyright" style="color:#fff; padding: 20px; margin-top : 0">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
                             <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" style="color:#fff">TDT</a>
@@ -257,7 +260,36 @@
     @RenderSection("script", required: false)
 
 
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "102664312678072");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v15.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 </body>
 

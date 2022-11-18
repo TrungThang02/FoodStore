@@ -36,21 +36,17 @@
     <div id="responsive-nav">
 
         <ul class="main-nav nav navbar-nav">
-            <li class="danhmuc active "><a href="~/Products" class="a" />Trang chủ</a></li>
+
+            <li class="@(Request.Url.ToString().Substring(Request.Url.ToString().LastIndexOf('/')+1) == "" ? "active" : "")"><a href="~/" class="a">Trang chủ</a></li>
             @foreach (var d in ViewBag.danhmuc)
             {
-                <li class="danhmuc"><a href="~/Products/@d.CategoryLink" class="a">@d.CategoryName</a></li>
+
+                <li onclick="myFunction()" class="@(Request.Url.ToString().Substring(Request.Url.ToString().LastIndexOf('/')+1) == d.CategoryLink ? "active" : "") navitem" data-id="@d.CategoryLink" id="@d.CategoryLink"><a href="~/Products/@d.CategoryLink" class="a">@d.CategoryName</a></li>
 
             }
+            
+
         </ul>
     </div>
 
-</div>
-
-
-@section navigation {
-    
-<script src="~/Scripts/navigation.js"></script>
-    }
-
-                
+</div>  
