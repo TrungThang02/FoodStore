@@ -17,7 +17,7 @@
                 bootbox.alert({
                     message: "Vui lòng đăng nhập để bình luận",
                     callback: function () {
-                        window.location.href = "https://localhost:44317/User/DangNhap?id=" + productid;
+                        window.location.href = "http://trungthang-001-site1.dtempurl.com/User/DangNhap?id=" + productid;
                     }
                 })
 
@@ -48,7 +48,7 @@
                         //    size: 'medium',
                         //    closeButton: false
                         //});
-                        $("#reviews").load("https://localhost:44317/Products/GetComment/?productid=" + productid)
+                        $("#reviews").load("http://trungthang-001-site1.dtempurl.com/Products/GetComment/?productid=" + productid)
 
                         $("#txtCommentNew").val("");
                         return false;

@@ -27,7 +27,7 @@ namespace FoodStore.Controllers
             string accessKey = "iPXneGmrJH0G8FOP";
             string serectkey = "sFcbSGRSJjwGxwhhcEktCHWYUuTuPNDB";
             string orderInfo = "Thanh toán";
-            string returnUrl = "https://localhost:44317/Momo/ConfirmPaymentClient";
+            string returnUrl = "http://trungthang-001-site1.dtempurl.com/Momo/ConfirmPaymentClient";
             string notifyurl = "https://4c8d-2001-ee0-5045-50-58c1-b2ec-3123-740d.ap.ngrok.io/Home/SavePayment"; //lưu ý: notifyurl không được sử dụng localhost, có thể sử dụng ngrok để public localhost trong quá trình test
 
             string amount =  g.getTongTien().ToString();

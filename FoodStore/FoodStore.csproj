@@ -189,6 +189,7 @@
       <DependentUpon>FoodStore.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\GioHang.cs" />
+    <Compile Include="helper\Mail.cs" />
     <Compile Include="Models\Mapping\CommentMap.cs" />
     <Compile Include="Models\OrderDetail.cs">
       <DependentUpon>FoodStore.tt</DependentUpon>
@@ -2107,6 +2108,7 @@
     <Content Include="Content\js\nouislider.min.js" />
     <Content Include="Content\js\slick.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\template\neworder.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2599,6 +2601,7 @@
     <Content Include="Areas\Admin\Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Content\ckeditor\SECURITY.md" />
     <Content Include="Areas\Admin\Content\ckeditor\skins\moono-lisa\readme.md" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Cart.js" />
     <Content Include="Scripts\Delete.js" />
@@ -2662,6 +2665,11 @@
     <Content Include="Views\Comments\CommentPartial.cshtml" />
     <Content Include="Views\Momo\ConfirmPaymentClient.cshtml" />
     <Content Include="Views\Shared\_ChildComment.cshtml" />
+    <Content Include="Views\User\Thaydoi.cshtml" />
+    <Content Include="Views\GioHang\Quanlidonhang.cshtml" />
+    <Content Include="Views\GioHang\LichSuMuaHang.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\ThayDoiThongTin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

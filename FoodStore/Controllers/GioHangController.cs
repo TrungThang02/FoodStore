@@ -2,12 +2,13 @@
 using FoodStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
-
-
+using FoodStore.helper;
+using System.Configuration;
 
 namespace FoodStore.Controllers
 {
@@ -181,6 +182,21 @@ namespace FoodStore.Controllers
         [HttpPost]
         public ActionResult DatHang(FormCollection f)
         {
+            var order = from d in db.Customer
+                       join b in db.Orders
+                       on d.CustomerId equals b.CustomerId
+                       select new {
+                           OrderDate = DateTime.Now,
+                            address = b.Address,
+                               mobile = d.Phone,
+                            shipName = d.CustomerName,
+                            email = d.Email
+
+        };
+
+
+
+            Product p = new Product();
             Orders ddh = new Orders();
             OrderDetail ct = new OrderDetail();
             Customer kh = (Customer)Session["cmt"];
@@ -228,6 +244,32 @@ namespace FoodStore.Controllers
                 ctdh.Price = (decimal)item.productPrice;
                 db.OrderDetail.Add(ctdh);
             }
+            string content = System.IO.File.ReadAllText(Server.MapPath("~/Content/template/neworder.html"));
+
+            content = content.Replace("{{CustomerName}}", kh.CustomerName);
+            content = content.Replace("{{Phone}}", kh.Phone);
+            content = content.Replace("{{Email}}", kh.Email);
+            content = content.Replace("{{Address}}", ddh.Address);
+            var lstgiohang = LayGioHang();
+            var noidung = "";
+            foreach (var item in lstgiohang)
+            {
+                noidung += item.productName + ", ";
+            }
+            content = content.Replace("{{Product}}", noidung);
+            content = content.Replace("{{Total}}", getTongTien().ToString("N0"));
+            var toEmail = kh.Email;
+
+            // Để Gmail cho phép SmtpClient kết nối đến server SMTP của nó với xác thực 
+            //là tài khoản gmail của bạn, bạn cần thiết lập tài khoản email của bạn như sau:
+            //Vào địa chỉ https://myaccount.google.com/security  Ở menu trái chọn mục Bảo mật, sau đó tại mục Quyền truy cập 
+            //của ứng dụng kém an toàn phải ở chế độ bật
+            //  Đồng thời tài khoản Gmail cũng cần bật IMAP
+            //Truy cập địa chỉ https://mail.google.com/mail/#settings/fwdandpop
+
+            new Mail().SendMail(toEmail, "Đơn hàng mới từ TDT Food", content);
+
+
             db.SaveChanges();
 
             Session["GioHang"] = null;
@@ -249,8 +291,42 @@ namespace FoodStore.Controllers
             return View();
         }
 
+        public ActionResult LichSuMuaHang(int? id)
+        {
+            var lsmh = from s in db.Orders where s.CustomerId == id select s;
+            return View(lsmh);
+        }
 
+        public ActionResult Quanlidonhang(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Orders order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CustomerId = new SelectList(db.Customer, "CustomerId", "CustomerName", order.CustomerId);
+            return View(order);
+        }
 
-
+        // POST: Admin/Orders/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Quanlidonhang([Bind(Include = "OrderId,CustomerId,OrderDate,DeliveryDate,Address,Recipient,RecipientPhone,OrderState,OrderPrice")] Orders order)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CustomerId = new SelectList(db.Customer, "CustomerId", "CustomerName", order.CustomerId);
+            return View(order);
+        }
     }
 }

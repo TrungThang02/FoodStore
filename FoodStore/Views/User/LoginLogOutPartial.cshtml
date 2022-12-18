@@ -2,8 +2,23 @@
 @using FoodStore.Models
 @{ var kh = Session["TaiKhoan"]; }
 
+@{var kh2 = Session["TaiKhoan2"];}
+
+<style>
+    .info{
+        display : inline-block;
+        justify-content : center;
+      
 
 
+    }
+    .header-links li a {
+        color: red;
+    }
+    .header-links li a:hover{
+        color : greenyellow;
+    }
+</style>
 @if (Session["TaiKhoan"] == null)
 {
     <ul class="header-links pull-right">
@@ -12,15 +27,32 @@
 }
 else
 {
-    <ul class="header-links pull-right">
-        <li><a href="#"><span class="fa fa-user"></span> Xin chào:@kh</a></li>
-        <li>
-            <a href="@Url.Action("DangXuat","User")">
-                <span class="fa fa-sign-out "></span> Đăng xuất
+<ul class="header-links pull-right">
+    <div class="dropdown flex-column">
+        <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="@Url.Action("QuanLiThongTin","User")" style="color:white;font-size : 12px; font-weight : 500"><span class="fa fa-user"></span> Xin chào:@kh</a>
+        </div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="info">
+    <li><a href="/User/ThayDoiThongTin/@kh2">Đổi thông tin</a></li>
+
+    <li><a href="/GioHang/LichSuMuaHang/@kh2">Lịch sử mua hàng</a></li>
+
+    <li>
+        <a href="@Url.Action("DangXuat","User")">
+            <span class="fa fa-sign-out "></span> Đăng xuất
+
+        </a>
+    </li>
+    </div>
+
+    </div>
+
+    </div>
 
 
-            </a>
-        </li>
-    </ul>
+
+
+</ul>
 
 }

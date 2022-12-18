@@ -1,4 +1,5 @@
 ﻿using FoodStore.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -124,53 +125,71 @@ namespace FoodStore.Controllers
         [HttpGet]
         public ActionResult DangNhap()
         {
+
             return View();
         }
 
         [HttpPost]
         public ActionResult DangNhap(FormCollection collection)
         {
-            int state = Convert.ToInt32(Request.QueryString["id"]);
-            var sTenDN = collection["TenDN"];
-            var sMatKhau = Encrypt(collection["MatKhau"].ToString());
-            if (String.IsNullOrEmpty(sTenDN))
+            var response = Request["g-recaptcha-response"];
+            string secretKey = "6LexpB0jAAAAAPFmXhwAmu2GGeV1DWOV5yH1Q1BK";
+            var client = new WebClient();
+
+            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
+
+            var obj = JObject.Parse(result);
+            var status = (bool)obj.SelectToken("success");
+            ViewBag.Message = status ? "Xác thực Google reCaptcha thành công !" : "Bạn chưa xác thực Google reCaptcha";
+
+
+            if (ModelState.IsValid && status)
             {
-                ViewData["err"] = "Tài khoản tên không được để trống";
-            }
-            else if (String.IsNullOrEmpty(sMatKhau))
-            {
-                ViewData["err"] = "Mật khẩu không được để trống";
-            }
-            else
-            {
-                Customer kh = db.Customer.SingleOrDefault(n => n.UserName == sTenDN && n.Password == sMatKhau);
-                if (kh != null)
+                int state = Convert.ToInt32(Request.QueryString["id"]);
+                var sTenDN = collection["TenDN"];
+                var sMatKhau = Encrypt(collection["MatKhau"].ToString());
+                if (String.IsNullOrEmpty(sTenDN))
                 {
-                    ViewBag.ThongBao = "Chúc mừng bạn đăng nhập thành công";
-                    Session["TaiKhoan"] = kh.CustomerName;
-
-                    Session["TaiKhoan2"] = kh.CustomerId;
-                    Session["cmt"] = kh;
-
-                    if (state == 1)
-                    {
-                        return RedirectToAction("Index", "Products");
-                    }
-                    else if(state >= 2 && state < db.Product.Max(p => p.ProductId))
-                    {
-                        return RedirectToAction("ChiTIetSanPham/" + state, "Products");
-                    }
-                    else
-                    {
-                        return RedirectToAction("DatHang", "GioHang");
-                    }
+                    ViewData["err"] = "Tài khoản tên không được để trống";
+                }
+                else if (String.IsNullOrEmpty(sMatKhau))
+                {
+                    ViewData["err"] = "Mật khẩu không được để trống";
                 }
                 else
                 {
-                    ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                    Customer kh = db.Customer.SingleOrDefault(n => n.UserName == sTenDN && n.Password == sMatKhau);
+                    if (kh != null)
+                    {
+                        ViewBag.ThongBao = "Chúc mừng bạn đăng nhập thành công";
+                        Session["TaiKhoan"] = kh.CustomerName;
 
+                        Session["TaiKhoan2"] = kh.CustomerId;
+                        Session["cmt"] = kh;
+
+                        if (state == 1)
+                        {
+                            return RedirectToAction("Index", "Products");
+                        }
+                        else if (state >= 2 && state < db.Product.Max(p => p.ProductId))
+                        {
+                            return RedirectToAction("ChiTIetSanPham/" + state, "Products");
+                        }
+                        else
+                        {
+                            return RedirectToAction("DatHang", "GioHang");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                        ViewBag.Message = status ? "Xác thực Google reCaptcha thành công !" : "Bạn chưa xác thực Google reCaptcha";
+
+                    }
                 }
             }
+            
+                  
             return View();
         }
         public ActionResult LoginLogOutPartial()
@@ -301,6 +320,47 @@ namespace FoodStore.Controllers
             }
             ViewBag.Message = message;
             return View(model);
+        }
+
+
+     
+  
+     
+        
+        public ActionResult ThayDoiThongTin(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customer.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
+
+    
+
+        // POST: Admin/Customers/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ThayDoiThongTin([Bind(Include = "CustomerId,CustomerName,Address,BirthDay,Password,UserName,Email,Phone,ResetPasswordCode")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                
+                db.SaveChanges();
+                Session.Remove("TaiKhoan");
+                Session["TaiKhoan"] = customer.CustomerName;
+                return RedirectToAction("Index","Products");
+            }
+            return View(customer);
         }
 
 
